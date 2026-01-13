@@ -359,10 +359,26 @@ with st.sidebar:
             help="Get your key from console.anthropic.com"
         )
         if api_key:
-            st.session_state.api_key = api_key
+            st.session_state.api_key = api_key.strip()
     else:
         st.success("✅ API Key Loaded")
-        st.session_state.api_key = api_key
+        # Show first/last chars for debugging
+        masked_key = f"{api_key[:10]}...{api_key[-10:]}" if len(api_key) > 20 else "***"
+        st.caption(f"Key: {masked_key}")
+
+        # Allow manual override
+        override = st.checkbox("🔄 Override API Key", help="Use a different API key")
+        if override:
+            manual_key = st.text_input(
+                "Enter new API Key:",
+                type="password",
+                help="This will override the stored key"
+            )
+            if manual_key:
+                api_key = manual_key.strip()
+                st.session_state.api_key = api_key
+        else:
+            st.session_state.api_key = api_key.strip()
 
     st.markdown("---")
 
