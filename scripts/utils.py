@@ -8,9 +8,16 @@ import os
 from datetime import datetime
 
 def load_config():
-    """Load config.yaml"""
-    with open('config.yaml', 'r') as f:
-        return yaml.safe_load(f)
+    """Load config.yaml or return defaults if not found"""
+    try:
+        with open('config.yaml', 'r') as f:
+            return yaml.safe_load(f)
+    except FileNotFoundError:
+        # Return minimal default config
+        return {
+            'database': {'path': 'data/chatmma.db'},
+            'logging': {'log_to_file': False, 'log_file': 'data/chatmma.log', 'level': 'INFO'}
+        }
 
 def load_yaml(filepath):
     """Load any YAML file"""
@@ -34,12 +41,15 @@ def log(message, level="INFO"):
     print(f"[{timestamp}] {level}: {message}")
 
     # Also write to log file if enabled
-    config = load_config()
-    if config['logging']['log_to_file']:
-        log_file = config['logging']['log_file']
-        os.makedirs(os.path.dirname(log_file), exist_ok=True)
-        with open(log_file, 'a') as f:
-            f.write(f"[{timestamp}] {level}: {message}\n")
+    try:
+        config = load_config()
+        if config.get('logging', {}).get('log_to_file', False):
+            log_file = config['logging']['log_file']
+            os.makedirs(os.path.dirname(log_file), exist_ok=True)
+            with open(log_file, 'a') as f:
+                f.write(f"[{timestamp}] {level}: {message}\n")
+    except:
+        pass  # Silently fail if config not available
 
 def sanitize_filename(name):
     """Convert event/source name to safe filename"""
