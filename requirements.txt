@@ -14,4 +14,9 @@ youtube-transcript-api>=0.6.0
 fuzzywuzzy>=0.18.0
 python-Levenshtein>=0.21.0
 
+# Web UI
+streamlit>=1.28.0
+pandas>=2.0.0
+plotly>=5.17.0
+
 # SQLite3 is built-in to Python, no install needed
