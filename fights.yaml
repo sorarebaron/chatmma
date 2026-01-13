@@ -1,0 +1,1333 @@
+events:
+  # UFC 320 - 2025-10-04
+  - name: "UFC 320"
+    date: "2025-10-04"
+    location: "Las Vegas, Nevada"
+    fights:
+      # Main Card
+      - fighter_a: "Alex Pereira"
+        fighter_b: "Magomed Ankalaev"
+        weight_class: "Light Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 5
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "1:20"
+      
+      - fighter_a: "Merab Dvalishvili"
+        fighter_b: "Cory Sandhagen"
+        weight_class: "Bantamweight"
+        is_main_card: true
+        scheduled_rounds: 5
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 5
+        time: "5:00"
+      
+      - fighter_a: "Jiri Prochazka"
+        fighter_b: "Khalil Rountree Jr."
+        weight_class: "Light Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 3
+        time: "3:04"
+      
+      - fighter_a: "Youssef Zalal"
+        fighter_b: "Josh Emmett"
+        weight_class: "Featherweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "1:38"
+      
+      - fighter_a: "Joe Pyfer"
+        fighter_b: "Abus Magomedov"
+        weight_class: "Middleweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "1:46"
+      
+      # Prelims
+      - fighter_a: "Ateba Gautier"
+        fighter_b: "Tre'ston Vines"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "1:41"
+      
+      - fighter_a: "Daniel Santos"
+        fighter_b: "JooSang Yoo"
+        weight_class: "Catch Weight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 2
+        time: "0:21"
+      
+      - fighter_a: "Jakub Wiklacz"
+        fighter_b: "Patchy Mix"
+        weight_class: "Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_S"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Edmen Shahbazyan"
+        fighter_b: "Andre Muniz"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "4:58"
+      
+      - fighter_a: "Punahele Soriano"
+        fighter_b: "Nikolay Veretennikov"
+        weight_class: "Welterweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Yana Santos"
+        fighter_b: "Macy Chiasson"
+        weight_class: "Women's Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Farid Basharat"
+        fighter_b: "Chris Gutierrez"
+        weight_class: "Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Ramiz Brahimaj"
+        fighter_b: "Austin Vanderford"
+        weight_class: "Welterweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "2:24"
+      
+      - fighter_a: "Veronica Hardy"
+        fighter_b: "Brogan Walker"
+        weight_class: "Women's Flyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+  
+  # UFC Rio - 2025-10-11
+  - name: "UFC Rio"
+    date: "2025-10-11"
+    location: "Rio de Janeiro, Brazil"
+    fights:
+      # Main Card
+      - fighter_a: "Charles Oliveira"
+        fighter_b: "Mateusz Gamrot"
+        weight_class: "Lightweight"
+        is_main_card: true
+        scheduled_rounds: 5
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "2:48"
+      
+      - fighter_a: "Deiveson Figueiredo"
+        fighter_b: "Montel Jackson"
+        weight_class: "Bantamweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_S"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Joel Alvarez"
+        fighter_b: "Vicente Luque"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Mario Pinto"
+        fighter_b: "Jhonata Diniz"
+        weight_class: "Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 2
+        time: "4:10"
+      
+      - fighter_a: "Kaan Ofli"
+        fighter_b: "Ricardo Ramos"
+        weight_class: "Featherweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "3:02"
+      
+      # Prelims
+      - fighter_a: "Michael Aswell Jr."
+        fighter_b: "Lucas Almeida"
+        weight_class: "Featherweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "1:42"
+      
+      - fighter_a: "Jafel Filho"
+        fighter_b: "Clayton Carpenter"
+        weight_class: "Flyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "4:42"
+      
+      - fighter_a: "Vitor Petrino"
+        fighter_b: "Thomas Petersen"
+        weight_class: "Heavyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 3
+        time: "0:26"
+      
+      - fighter_a: "Bia Mesquita"
+        fighter_b: "Irina Alekseeva"
+        weight_class: "Women's Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "2:14"
+      
+      - fighter_a: "Lucas Rocha"
+        fighter_b: "Stewart Nicoll"
+        weight_class: "Flyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Julia Polastri"
+        fighter_b: "Karolina Kowalkiewicz"
+        weight_class: "Women's Strawweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 3
+        time: "2:56"
+      
+      - fighter_a: "Luan Lacerda"
+        fighter_b: "Saimon Oliveira"
+        weight_class: "Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "3:55"
+  
+  # UFC Vancouver - 2025-10-18
+  - name: "UFC Vancouver"
+    date: "2025-10-18"
+    location: "Vancouver, Canada"
+    fights:
+      # Main Card
+      - fighter_a: "Brendan Allen"
+        fighter_b: "Reinier de Ridder"
+        weight_class: "Middleweight"
+        is_main_card: true
+        scheduled_rounds: 5
+        result: "fighter_a_win"
+        method: "KO"
+        round: 4
+        time: "5:00"
+      
+      - fighter_a: "Mike Malott"
+        fighter_b: "Kevin Holland"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Aiemann Zahabi"
+        fighter_b: "Marlon Vera"
+        weight_class: "Bantamweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_S"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Manon Fiorot"
+        fighter_b: "Jasmine Jasudavicius"
+        weight_class: "Women's Flyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "1:14"
+      
+      - fighter_a: "Charles Jourdain"
+        fighter_b: "Davey Grant"
+        weight_class: "Bantamweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "3:05"
+      
+      # Prelims
+      - fighter_a: "Kyle Nelson"
+        fighter_b: "Matt Frevola"
+        weight_class: "Lightweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Drew Dober"
+        fighter_b: "Kyle Prepolec"
+        weight_class: "Lightweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 3
+        time: "1:16"
+      
+      - fighter_a: "Aoriqileng"
+        fighter_b: "Cody Gibson"
+        weight_class: "Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "0:21"
+      
+      - fighter_a: "Bruno Silva"
+        fighter_b: "HyunSung Park"
+        weight_class: "Flyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 3
+        time: "2:15"
+      
+      - fighter_a: "Djorden Santos"
+        fighter_b: "Danny Barlow"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Stephanie Luciano"
+        fighter_b: "Ravena Oliveira"
+        weight_class: "Women's Strawweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 3
+        time: "2:50"
+      
+      - fighter_a: "Yousri Belgaroui"
+        fighter_b: "Azamat Bekoev"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 3
+        time: "0:55"
+      
+      - fighter_a: "Melissa Croden"
+        fighter_b: "Tainara Lisboa"
+        weight_class: "Women's Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 3
+        time: "4:32"
+  
+  # UFC 321 - 2025-10-25
+  - name: "UFC 321"
+    date: "2025-10-25"
+    location: "Abu Dhabi, United Arab Emirates"
+    fights:
+      # Main Card
+      - fighter_a: "Tom Aspinall"
+        fighter_b: "Ciryl Gane"
+        weight_class: "Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 5
+        result: "NC"
+        method: "NC"
+        round: 1
+        time: "4:35"
+      
+      - fighter_a: "Mackenzie Dern"
+        fighter_b: "Virna Jandiroba"
+        weight_class: "Women's Strawweight"
+        is_main_card: true
+        scheduled_rounds: 5
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 5
+        time: "5:00"
+      
+      - fighter_a: "Umar Nurmagomedov"
+        fighter_b: "Mario Bautista"
+        weight_class: "Bantamweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Alexander Volkov"
+        fighter_b: "Jailton Almeida"
+        weight_class: "Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_S"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Azamat Murzakanov"
+        fighter_b: "Aleksandar Rakic"
+        weight_class: "Light Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "3:11"
+      
+      # Prelims
+      - fighter_a: "Quillan Salkilld"
+        fighter_b: "Nasrat Haqparast"
+        weight_class: "Lightweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "2:30"
+      
+      - fighter_a: "Ikram Aliskerov"
+        fighter_b: "JunYong Park"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Ludovit Klein"
+        fighter_b: "Mateusz Rebecki"
+        weight_class: "Lightweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_M"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Valter Walker"
+        fighter_b: "Louie Sutherland"
+        weight_class: "Heavyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "1:24"
+      
+      - fighter_a: "Nathaniel Wood"
+        fighter_b: "Jose Delgado"
+        weight_class: "Featherweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Hamdy Abdelwahab"
+        fighter_b: "Chris Barnett"
+        weight_class: "Heavyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Mitch Raposo"
+        fighter_b: "Azat Maksum"
+        weight_class: "Flyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Mizuki"
+        fighter_b: "Jaqueline Amorim"
+        weight_class: "Women's Strawweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+  
+  # UFC Vegas 110 - 2025-11-01
+  - name: "UFC Vegas 110"
+    date: "2025-11-01"
+    location: "Las Vegas, Nevada"
+    fights:
+      # Main Card
+      - fighter_a: "Steve Garcia"
+        fighter_b: "David Onama"
+        weight_class: "Featherweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "3:34"
+      
+      - fighter_a: "Waldo Cortes-Acosta"
+        fighter_b: "Ante Delija"
+        weight_class: "Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "3:59"
+      
+      - fighter_a: "Jeremiah Wells"
+        fighter_b: "Themba Gorimbo"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Yadier del Valle"
+        fighter_b: "Isaac Dulgarian"
+        weight_class: "Featherweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "3:41"
+      
+      - fighter_a: "Charles Radtke"
+        fighter_b: "Daniel Frunza"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 3
+        time: "4:29"
+      
+      # Prelims
+      - fighter_a: "Allan Nascimento"
+        fighter_b: "Cody Durden"
+        weight_class: "Catch Weight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "3:13"
+      
+      - fighter_a: "Billy Elekana"
+        fighter_b: "Kevin Christian"
+        weight_class: "Light Heavyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "3:33"
+      
+      - fighter_a: "Timmy Cuamba"
+        fighter_b: "ChangHo Lee"
+        weight_class: "Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Donte Johnson"
+        fighter_b: "Sedriques Dumas"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "1:25"
+      
+      - fighter_a: "Norma Dumont"
+        fighter_b: "Ketlen Vieira"
+        weight_class: "Women's Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_S"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Alice Ardelean"
+        fighter_b: "Montserrat Conejo Ruiz"
+        weight_class: "Women's Strawweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Seokhyeon Ko"
+        fighter_b: "Phil Rowe"
+        weight_class: "Welterweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Talita Alencar"
+        fighter_b: "Ariane Carnelossi"
+        weight_class: "Women's Strawweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 3
+        time: "4:36"
+  
+  # UFC Vegas 111 - 2025-11-08
+  - name: "UFC Vegas 111"
+    date: "2025-11-08"
+    location: "Las Vegas, Nevada"
+    fights:
+      # Main Card
+      - fighter_a: "Gabriel Bonfim"
+        fighter_b: "Randy Brown"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 2
+        time: "1:40"
+      
+      - fighter_a: "Joseph Morales"
+        fighter_b: "Matt Schnell"
+        weight_class: "Flyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "2:54"
+      
+      - fighter_a: "Uros Medic"
+        fighter_b: "Muslim Salikhov"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "1:03"
+      
+      - fighter_a: "Chris Padilla"
+        fighter_b: "Ismael Bonfim"
+        weight_class: "Lightweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 2
+        time: "4:30"
+      
+      - fighter_a: "Christian Leroy Duncan"
+        fighter_b: "Marco Tulio"
+        weight_class: "Middleweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 2
+        time: "3:20"
+      
+      # Prelims
+      - fighter_a: "Jamall Emmers"
+        fighter_b: "Hyder Amil"
+        weight_class: "Featherweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Raoni Barcelos"
+        fighter_b: "Ricky Simon"
+        weight_class: "Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Jacqueline Cavalcanti"
+        fighter_b: "Mayra Bueno Silva"
+        weight_class: "Women's Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Josh Hokit"
+        fighter_b: "Max Gimenis"
+        weight_class: "Heavyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "0:56"
+      
+      - fighter_a: "Denise Gomes"
+        fighter_b: "Tecia Pennington"
+        weight_class: "Women's Strawweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Daniel Marcos"
+        fighter_b: "Miles Johns"
+        weight_class: "Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "4:23"
+      
+      - fighter_a: "Zach Reese"
+        fighter_b: "Jackson McVey"
+        weight_class: "Catch Weight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "1:38"
+  
+  # UFC 322 - 2025-11-15
+  - name: "UFC 322"
+    date: "2025-11-15"
+    location: "New York City, New York"
+    fights:
+      # Main Card
+      - fighter_a: "Islam Makhachev"
+        fighter_b: "Jack Della Maddalena"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 5
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 5
+        time: "5:00"
+      
+      - fighter_a: "Valentina Shevchenko"
+        fighter_b: "Zhang Weili"
+        weight_class: "Women's Flyweight"
+        is_main_card: true
+        scheduled_rounds: 5
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 5
+        time: "5:00"
+      
+      - fighter_a: "Michael Morales"
+        fighter_b: "Sean Brady"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "3:27"
+      
+      - fighter_a: "Carlos Prates"
+        fighter_b: "Leon Edwards"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 2
+        time: "1:28"
+      
+      - fighter_a: "Benoit Saint Denis"
+        fighter_b: "Beneil Dariush"
+        weight_class: "Lightweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "0:16"
+      
+      # Prelims
+      - fighter_a: "Bo Nickal"
+        fighter_b: "Rodolfo Vieira"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 3
+        time: "2:24"
+      
+      - fighter_a: "Gregory Rodrigues"
+        fighter_b: "Roman Kopylov"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Erin Blanchfield"
+        fighter_b: "Tracy Cortez"
+        weight_class: "Women's Flyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "4:44"
+      
+      - fighter_a: "Ethyn Ewing"
+        fighter_b: "Malcolm Wellmaker"
+        weight_class: "Featherweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Kyle Daukaus"
+        fighter_b: "Gerald Meerschaert"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "0:50"
+      
+      - fighter_a: "Pat Sabatini"
+        fighter_b: "Chepe Mariscal"
+        weight_class: "Featherweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Fatima Kline"
+        fighter_b: "Angela Hill"
+        weight_class: "Women's Strawweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Baisangur Susurkaev"
+        fighter_b: "Eric McConico"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 3
+        time: "1:38"
+      
+      - fighter_a: "Matheus Camilo"
+        fighter_b: "Viacheslav Borshchev"
+        weight_class: "Lightweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+  
+  # UFC Qatar - 2025-11-22
+  - name: "UFC Qatar"
+    date: "2025-11-22"
+    location: "Doha, Qatar"
+    fights:
+      # Main Card
+      - fighter_a: "Arman Tsarukyan"
+        fighter_b: "Dan Hooker"
+        weight_class: "Lightweight"
+        is_main_card: true
+        scheduled_rounds: 5
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 2
+        time: "3:34"
+      
+      - fighter_a: "Ian Machado Garry"
+        fighter_b: "Belal Muhammad"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Volkan Oezdemir"
+        fighter_b: "Alonzo Menifield"
+        weight_class: "Light Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "1:27"
+      
+      - fighter_a: "Myktybek Orolbai"
+        fighter_b: "Jack Hermansson"
+        weight_class: "Welterweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "2:46"
+      
+      - fighter_a: "Waldo Cortes-Acosta"
+        fighter_b: "Shamil Gaziev"
+        weight_class: "Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "1:22"
+      
+      # Prelims
+      - fighter_a: "Kyoji Horiguchi"
+        fighter_b: "Tagir Ulanbekov"
+        weight_class: "Flyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 3
+        time: "2:18"
+      
+      - fighter_a: "Luke Riley"
+        fighter_b: "Bogdan Grad"
+        weight_class: "Featherweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 2
+        time: "0:30"
+      
+      - fighter_a: "Nicolas Dalby"
+        fighter_b: "Saygid Izagakhmaev"
+        weight_class: "Welterweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_S"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Asu Almabayev"
+        fighter_b: "Alex Perez"
+        weight_class: "Flyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 3
+        time: "0:22"
+      
+      - fighter_a: "Abdul Rakhman Yakhyaev"
+        fighter_b: "Rafael Cerqueira"
+        weight_class: "Light Heavyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "0:33"
+      
+      - fighter_a: "Aleksandre Topuria"
+        fighter_b: "Bekzat Almakhan"
+        weight_class: "Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Ismail Naurdiev"
+        fighter_b: "Ryan Loder"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "1:26"
+      
+      - fighter_a: "Nurullo Aliev"
+        fighter_b: "Shem Rock"
+        weight_class: "Lightweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Denzel Freeman"
+        fighter_b: "Marek Bujlo"
+        weight_class: "Heavyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+  
+  # UFC 323 - 2025-12-06
+  - name: "UFC 323"
+    date: "2025-12-06"
+    location: "Las Vegas, Nevada"
+    fights:
+      # Main Card
+      - fighter_a: "Petr Yan"
+        fighter_b: "Merab Dvalishvili"
+        weight_class: "Bantamweight"
+        is_main_card: true
+        scheduled_rounds: 5
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 5
+        time: "5:00"
+      
+      - fighter_a: "Joshua Van"
+        fighter_b: "Alexandre Pantoja"
+        weight_class: "Flyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "0:26"
+      
+      - fighter_a: "Tatsuro Taira"
+        fighter_b: "Brandon Moreno"
+        weight_class: "Flyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 2
+        time: "2:24"
+      
+      - fighter_a: "Payton Talbott"
+        fighter_b: "Henry Cejudo"
+        weight_class: "Bantamweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Jan Blachowicz"
+        fighter_b: "Bogdan Guskov"
+        weight_class: "Light Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        result: "draw"
+        method: "DEC_M"
+        round: 3
+        time: "5:00"
+      
+      # Prelims
+      - fighter_a: "Manuel Torres"
+        fighter_b: "Grant Dawson"
+        weight_class: "Lightweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "2:25"
+      
+      - fighter_a: "Chris Duncan"
+        fighter_b: "Terrance McKinney"
+        weight_class: "Lightweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "2:30"
+      
+      - fighter_a: "Maycee Barber"
+        fighter_b: "Karine Silva"
+        weight_class: "Women's Flyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Fares Ziam"
+        fighter_b: "Nazim Sadykhov"
+        weight_class: "Lightweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 2
+        time: "4:59"
+      
+      - fighter_a: "Brunno Ferreira"
+        fighter_b: "Marvin Vettori"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "DEC_U"
+        round: 3
+        time: "5:00"
+      
+      - fighter_a: "Jalin Turner"
+        fighter_b: "Edson Barboza"
+        weight_class: "Lightweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "2:24"
+      
+      - fighter_a: "Iwo Baraniewski"
+        fighter_b: "Ibo Aslan"
+        weight_class: "Light Heavyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 1
+        time: "1:29"
+      
+      - fighter_a: "Mansur Abdul-Malik"
+        fighter_b: "Antonio Trocoli"
+        weight_class: "Middleweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "SUB"
+        round: 1
+        time: "1:09"
+      
+      - fighter_a: "Mairon Santos"
+        fighter_b: "Muhammad Naimov"
+        weight_class: "Featherweight"
+        is_main_card: false
+        scheduled_rounds: 3
+        result: "fighter_a_win"
+        method: "KO"
+        round: 3
+        time: "0:21"
+  
+  # UFC Vegas 112 - 2025-12-13 (TESTING EVENT - NO RESULTS)
+  - name: "UFC Vegas 112"
+    date: "2025-12-13"
+    location: "Las Vegas, Nevada"
+    fights:
+      # Main Card
+      - fighter_a: "Manel Kape"
+        fighter_b: "Brandon Royval"
+        weight_class: "Flyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+        # NO RESULTS - This is the testing holdout event
+      
+      - fighter_a: "Kevin Vallejos"
+        fighter_b: "Giga Chikadze"
+        weight_class: "Featherweight"
+        is_main_card: true
+        scheduled_rounds: 3
+      
+      - fighter_a: "Cezary Oleksiejczuk"
+        fighter_b: "Cesar Almeida"
+        weight_class: "Middleweight"
+        is_main_card: true
+        scheduled_rounds: 3
+      
+      - fighter_a: "Melquizael Costa"
+        fighter_b: "Morgan Charriere"
+        weight_class: "Featherweight"
+        is_main_card: true
+        scheduled_rounds: 3
+      
+      - fighter_a: "Kennedy Nzechukwu"
+        fighter_b: "Marcus Buchecha"
+        weight_class: "Heavyweight"
+        is_main_card: true
+        scheduled_rounds: 3
+      
+      # Prelims
+      - fighter_a: "King Green"
+        fighter_b: "Lance Gibson Jr."
+        weight_class: "Catch Weight"
+        is_main_card: false
+        scheduled_rounds: 3
+      
+      - fighter_a: "Yaroslav Amosov"
+        fighter_b: "Neil Magny"
+        weight_class: "Welterweight"
+        is_main_card: false
+        scheduled_rounds: 3
+      
+      - fighter_a: "Joanderson Brito"
+        fighter_b: "Isaac Thomson"
+        weight_class: "Featherweight"
+        is_main_card: false
+        scheduled_rounds: 3
+      
+      - fighter_a: "Steven Asplund"
+        fighter_b: "Sean Sharaf"
+        weight_class: "Heavyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+      
+      - fighter_a: "Luana Santos"
+        fighter_b: "Melissa Croden"
+        weight_class: "Women's Bantamweight"
+        is_main_card: false
+        scheduled_rounds: 3
+      
+      - fighter_a: "Guilherme Pat"
+        fighter_b: "Allen Frye Jr."
+        weight_class: "Heavyweight"
+        is_main_card: false
+        scheduled_rounds: 3
+      
+      - fighter_a: "Jamey-Lyn Horth"
+        fighter_b: "Tereza Bleda"
+        weight_class: "Women's Flyweight"
+        is_main_card: false
+        scheduled_rounds: 3
