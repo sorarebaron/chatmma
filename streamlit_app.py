@@ -668,14 +668,18 @@ elif page == "⚙️ Process Event":
 
         with col2:
             if st.button("🤖 Extract Predictions"):
-                with st.spinner("Extracting predictions with Claude..."):
-                    from extract_picks import extract_all
+                if not st.session_state.api_key:
+                    st.error("⚠️ API key required for extraction")
+                else:
+                    with st.spinner("Extracting predictions with Claude..."):
+                        from extract_picks import extract_all
 
-                    try:
-                        extract_all(selected_event)
-                        st.success("✅ Predictions extracted!")
-                    except Exception as e:
-                        st.error(f"Error: {str(e)}")
+                        try:
+                            extract_all(selected_event, st.session_state.api_key)
+                            st.success("✅ Predictions extracted!")
+                            st.rerun()
+                        except Exception as e:
+                            st.error(f"Error: {str(e)}")
 
         with col3:
             if st.button("💾 Load to Database"):

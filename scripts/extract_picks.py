@@ -62,16 +62,23 @@ IMPORTANT:
 """
     return prompt
 
-def extract_from_content(content_path, event_name, fights, source_info):
+def extract_from_content(content_path, event_name, fights, source_info, api_key=None):
     """Extract predictions from article or transcript"""
     config = load_config()
+
+    # Get API key from parameter or config
+    if not api_key:
+        api_key = config.get('claude_api', {}).get('key')
+
+    if not api_key:
+        raise ValueError("No API key provided")
 
     # Read content
     with open(content_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
     # Initialize Claude client
-    client = Anthropic(api_key=config['claude_api']['key'])
+    client = Anthropic(api_key=api_key)
 
     # Generate prompt
     prompt = get_extraction_prompt(event_name, fights, content, source_info['type'])
@@ -79,18 +86,24 @@ def extract_from_content(content_path, event_name, fights, source_info):
     log(f"Extracting predictions from {source_info['name']}")
 
     try:
+        # Get config values with defaults
+        model = config.get('claude_api', {}).get('extraction_model', 'claude-haiku-4-5-20251001')
+        max_tokens = config.get('claude_api', {}).get('max_tokens', 1500)
+        temperature = config.get('claude_api', {}).get('temperature', 0.3)
+        cost_tracking = config.get('cost_tracking', {}).get('enabled', True)
+
         # Call Claude API
         message = client.messages.create(
-            model=config['claude_api']['extraction_model'],
-            max_tokens=config['claude_api']['max_tokens'],
-            temperature=config['claude_api']['temperature'],
+            model=model,
+            max_tokens=max_tokens,
+            temperature=temperature,
             messages=[{"role": "user", "content": prompt}]
         )
 
         response_text = message.content[0].text
 
         # Log API usage
-        if config['cost_tracking']['enabled']:
+        if cost_tracking:
             input_tokens = message.usage.input_tokens
             output_tokens = message.usage.output_tokens
             # Haiku pricing: $0.80/MTok input, $4.00/MTok output
@@ -132,7 +145,7 @@ def extract_from_content(content_path, event_name, fights, source_info):
         log(f"Error during extraction: {str(e)}", "ERROR")
         return None
 
-def extract_all(event_name):
+def extract_all(event_name, api_key=None):
     """Extract predictions from all sources for an event"""
     sources = load_yaml('sources.yaml')['sources']
     fights_data = load_yaml('fights.yaml')
@@ -170,7 +183,7 @@ def extract_all(event_name):
             log(f"Content file not found: {content_path}", "WARNING")
             continue
 
-        predictions = extract_from_content(content_path, event_name, fights, source)
+        predictions = extract_from_content(content_path, event_name, fights, source, api_key)
 
         if predictions:
             total_extracted += len(predictions)
