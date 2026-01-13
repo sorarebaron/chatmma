@@ -1,0 +1,65 @@
+{
+  "response": "```json\n{\n  \"predictions\": [\n    {\n      \"fighter_a\": \"Petr Yan\",\n      \"fighter_b\": \"Merab Dvalishvili\",\n      \"pick\": \"Petr Yan\",\n      \"method\": \"DEC\",\n      \"confidence\": \"high\",\n      \"reasoning\": \"Yan's improved takedown defense and counter-striking will be the difference. Yan has been working extensively on his wrestling and will stuff most of Merab's takedown attempts.\",\n      \"dfs_note\": null,\n      \"extraction_confidence\": 95\n    },\n    {\n      \"fighter_a\": \"Joshua Van\",\n      \"fighter_b\": \"Alexandre Pantoja\",\n      \"pick\": \"Joshua Van\",\n      \"method\": \"KO\",\n      \"confidence\": \"high\",\n      \"reasoning\": \"Van has explosive power and Pantoja has been taking damage in recent fights. Van catches him early.\",\n      \"dfs_note\": \"Van is top play for knockout upside\",\n      \"extraction_confidence\": 95\n    },\n    {\n      \"fighter_a\": \"Tatsuro Taira\",\n      \"fighter_b\": \"Brandon Moreno\",\n      \"pick\": \"Tatsuro Taira\",\n      \"method\": \"KO\",\n      \"confidence\": \"high\",\n      \"reasoning\": \"Taira has looked incredible and Moreno is on the decline. His striking has improved dramatically.\",\n      \"dfs_note\": \"Taira is a great value at his price point\",\n      \"extraction_confidence\": 95\n    },\n    {\n      \"fighter_a\": \"Payton Talbott\",\n      \"fighter_b\": \"Henry Cejudo\",\n      \"pick\": \"Payton Talbott\",\n      \"method\": \"DEC\",\n      \"confidence\": \"high\",\n      \"reasoning\": \"Cejudo is past his prime, but Talbott is the future and his experience will matter less than Talbott's potential.\",\n      \"dfs_note\": \"Talbott should provide solid points even in a decision\",\n      \"extraction_confidence\": 92\n    },\n    {\n      \"fighter_a\": \"Jan Blachowicz\",\n      \"fighter_b\": \"Bogdan Guskov\",\n      \"pick\": \"Jan Blachowicz\",\n      \"method\": \"DEC\",\n      \"confidence\": \"medium\",\n      \"reasoning\": \"This should be a competitive fight. Blachowicz by split decision, but it could go either way.\",\n      \"dfs_note\": null,\n      \"extraction_confidence\": 90\n    }\n  ]\n}\n```",
+  "parsed": {
+    "predictions": [
+      {
+        "fighter_a": "Petr Yan",
+        "fighter_b": "Merab Dvalishvili",
+        "pick": "Petr Yan",
+        "method": "DEC",
+        "confidence": "high",
+        "reasoning": "Yan's improved takedown defense and counter-striking will be the difference. Yan has been working extensively on his wrestling and will stuff most of Merab's takedown attempts.",
+        "dfs_note": null,
+        "extraction_confidence": 95
+      },
+      {
+        "fighter_a": "Joshua Van",
+        "fighter_b": "Alexandre Pantoja",
+        "pick": "Joshua Van",
+        "method": "KO",
+        "confidence": "high",
+        "reasoning": "Van has explosive power and Pantoja has been taking damage in recent fights. Van catches him early.",
+        "dfs_note": "Van is top play for knockout upside",
+        "extraction_confidence": 95
+      },
+      {
+        "fighter_a": "Tatsuro Taira",
+        "fighter_b": "Brandon Moreno",
+        "pick": "Tatsuro Taira",
+        "method": "KO",
+        "confidence": "high",
+        "reasoning": "Taira has looked incredible and Moreno is on the decline. His striking has improved dramatically.",
+        "dfs_note": "Taira is a great value at his price point",
+        "extraction_confidence": 95
+      },
+      {
+        "fighter_a": "Payton Talbott",
+        "fighter_b": "Henry Cejudo",
+        "pick": "Payton Talbott",
+        "method": "DEC",
+        "confidence": "high",
+        "reasoning": "Cejudo is past his prime, but Talbott is the future and his experience will matter less than Talbott's potential.",
+        "dfs_note": "Talbott should provide solid points even in a decision",
+        "extraction_confidence": 92
+      },
+      {
+        "fighter_a": "Jan Blachowicz",
+        "fighter_b": "Bogdan Guskov",
+        "pick": "Jan Blachowicz",
+        "method": "DEC",
+        "confidence": "medium",
+        "reasoning": "This should be a competitive fight. Blachowicz by split decision, but it could go either way.",
+        "dfs_note": null,
+        "extraction_confidence": 90
+      }
+    ]
+  },
+  "source": {
+    "name": "Analyst_001",
+    "type": "article",
+    "publication": "MMA Fighting",
+    "analyst": "Alexander K. Lee",
+    "url": "https://www.mmafighting.com/ufc/459215/ufc-323-predictions",
+    "event": "UFC 323"
+  }
+}

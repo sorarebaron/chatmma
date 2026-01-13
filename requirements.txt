@@ -1,0 +1,17 @@
+# ChatMMA Dependencies (Minimal)
+# Python 3.8+
+
+# Core
+anthropic>=0.25.0
+pyyaml>=6.0
+requests>=2.31.0
+
+# Content fetching
+beautifulsoup4>=4.12.0
+youtube-transcript-api>=0.6.0
+
+# Name matching
+fuzzywuzzy>=0.18.0
+python-Levenshtein>=0.21.0
+
+# SQLite3 is built-in to Python, no install needed

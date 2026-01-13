@@ -1,0 +1,59 @@
+# Fighter Name Aliases
+# Map common variations, nicknames, and misspellings to canonical names
+# Format: canonical_name: [alias1, alias2, alias3]
+
+aliases:
+  # UFC 323 Fighters
+  "Petr Yan":
+    - "Peter Yan"
+    - "Yan"
+    - "No Mercy"
+
+  "Merab Dvalishvili":
+    - "Merab"
+    - "The Machine"
+    - "Dvalishvili"
+
+  "Brandon Royval":
+    - "Royal"
+    - "Raw Dawg"
+    - "Royval"
+
+  "Manel Kape":
+    - "Starboy"
+    - "Kape"
+
+  "Giga Chikadze":
+    - "Giga"
+    - "Ninja"
+    - "Chikadze"
+
+  "Alex Pereira":
+    - "Poatan"
+    - "Pereira"
+    - "Alex"
+
+  "Magomed Ankalaev":
+    - "Ankalaev"
+    - "Magomed"
+
+  "Islam Makhachev":
+    - "Makhachev"
+    - "Islam"
+
+  "Charles Oliveira":
+    - "Do Bronx"
+    - "Oliveira"
+    - "Charlie Olives"
+
+  "Zhang Weili":
+    - "Weili"
+    - "Weili Zhang"
+    - "Zhang"
+
+  "Valentina Shevchenko":
+    - "Bullet"
+    - "Shevchenko"
+    - "Valentina"
+
+  # Add more as needed

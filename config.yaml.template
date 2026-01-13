@@ -1,0 +1,77 @@
+# ChatMMA Configuration File Template
+# Copy this to config.yaml and fill in your API key
+
+# Claude API Configuration
+claude_api:
+  extraction_model: "claude-haiku-4-5-20251001"  # Cost-effective for extraction
+  chat_model: "claude-sonnet-4-20250514"          # Quality for user chat
+  key: "YOUR_CLAUDE_API_KEY_HERE"                 # Replace with your actual API key
+  max_tokens: 1500                                 # Default max tokens per request
+  temperature: 0.3                                 # Lower = more deterministic
+
+# Database Configuration
+database:
+  path: "data/chatmma.db"                         # SQLite database location
+
+# QA Review Settings
+qa:
+  extraction_confidence_threshold: 70             # Flag predictions below this confidence
+  auto_approve_above: 90                          # Auto-approve predictions above this confidence
+
+# Name Matching Settings (for future fighter alias matching)
+name_matching:
+  fuzzy_threshold: 85                             # Minimum similarity score for fuzzy matching
+  enabled: false                                  # Set to true when aliases.yaml is ready
+
+# Fighter Profile Settings
+fighter_profiles:
+  min_mentions_for_profile: 3                     # Minimum mentions before creating profile
+  trait_significance_threshold: 3                 # Minimum occurrences for trait to be significant
+  update_frequency: "after_each_event"            # When to rebuild fighter profiles
+
+# YouTube Transcript Settings
+youtube:
+  transcript_languages: ["en"]                    # Languages to fetch
+  max_transcript_length: 50000                    # Skip videos longer than this (characters)
+  fallback_to_auto_generated: true                # Use auto-generated if manual unavailable
+
+# Storage Settings
+storage:
+  keep_transcripts_after_qa: true                 # Keep raw transcripts for debugging
+  keep_raw_outputs_always: true                   # Always keep Claude API responses
+  cleanup_after_days: 60                          # Auto-cleanup old files after this many days
+  auto_cleanup_enabled: false                     # Enable automatic cleanup (MVP: false)
+
+# Testing Configuration
+testing:
+  holdout_event: "UFC Vegas 112"                  # Event to test predictions on
+  min_accuracy_threshold: 60                      # Minimum accuracy % to proceed with launch
+  validation_mode: true                           # Enable testing features
+
+# Analyst Credibility Scoring
+scoring:
+  initial_credibility: 50                         # Starting credibility score for new analysts
+  max_credibility: 100                            # Maximum credibility score
+  min_credibility: 0                              # Minimum credibility score
+  weight_by_recency: true                         # Weight recent predictions more heavily
+  recency_decay_factor: 0.95                      # Decay factor for older predictions
+
+# Feature Flags (for MVP)
+features:
+  enable_dfs_insights: true                       # Extract DFS-related insights
+  enable_method_predictions: true                 # Extract finish method predictions
+  enable_confidence_ratings: true                 # Track analyst confidence levels
+  enable_fighter_learning: true                   # Build fighter profiles over time
+
+# Logging
+logging:
+  level: "INFO"                                   # DEBUG, INFO, WARNING, ERROR
+  log_to_file: true                               # Write logs to file
+  log_file: "data/chatmma.log"                    # Log file location
+  log_api_calls: true                             # Log all API calls for cost tracking
+
+# Cost Tracking (optional but recommended)
+cost_tracking:
+  enabled: true                                   # Track API costs
+  monthly_budget: 28.00                           # Your monthly budget in USD
+  alert_at_percentage: 80                         # Alert when reaching this % of budget

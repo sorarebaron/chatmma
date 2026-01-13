@@ -1,0 +1,64 @@
+{
+  "event": "UFC 323",
+  "source": {
+    "name": "Analyst_005",
+    "type": "youtube",
+    "channel": "The MMA Guru",
+    "analyst": "The MMA Guru",
+    "url": "https://www.youtube.com/watch?v=R9iUQJldvyk",
+    "event": "UFC 323"
+  },
+  "extracted_at": "2026-01-13T03:14:02.689414",
+  "predictions": [
+    {
+      "fighter_a": "Petr Yan",
+      "fighter_b": "Merab Dvalishvili",
+      "pick": "Merab Dvalishvili",
+      "method": "DEC",
+      "confidence": "medium",
+      "reasoning": "Merab's cardio and pressure is too much. Unanimous decision.",
+      "dfs_note": null,
+      "extraction_confidence": 95
+    },
+    {
+      "fighter_a": "Joshua Van",
+      "fighter_b": "Alexandre Pantoja",
+      "pick": "Alexandre Pantoja",
+      "method": "SUB",
+      "confidence": "medium",
+      "reasoning": "Pantoja is too experienced. Van has knockout power but experience wins out.",
+      "dfs_note": null,
+      "extraction_confidence": 90
+    },
+    {
+      "fighter_a": "Tatsuro Taira",
+      "fighter_b": "Brandon Moreno",
+      "pick": "Tatsuro Taira",
+      "method": "KO",
+      "confidence": "high",
+      "reasoning": "Taira is the real deal. He's going to knock out Moreno. Highly confident.",
+      "dfs_note": "Top DFS pick for the week",
+      "extraction_confidence": 98
+    },
+    {
+      "fighter_a": "Payton Talbott",
+      "fighter_b": "Henry Cejudo",
+      "pick": "Payton Talbott",
+      "method": "DEC",
+      "confidence": "medium",
+      "reasoning": "Talbott is going to piece up Cejudo. Cejudo is too old now.",
+      "dfs_note": "Solid DFS points",
+      "extraction_confidence": 95
+    },
+    {
+      "fighter_a": "Jan Blachowicz",
+      "fighter_b": "Bogdan Guskov",
+      "pick": null,
+      "method": null,
+      "confidence": "low",
+      "reasoning": "Both guys are evenly matched. Predicts a draw, not a winner.",
+      "dfs_note": null,
+      "extraction_confidence": 85
+    }
+  ]
+}
