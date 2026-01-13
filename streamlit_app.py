@@ -611,6 +611,42 @@ elif page == "⚙️ Process Event":
                     st.error(f"Error loading sample data: {str(e)}")
 
         st.markdown("---")
+
+        # Clear database button
+        st.warning("⚠️ **Reset Data:** Clear all predictions to start fresh")
+        if st.button("🗑️ Clear All Predictions", use_container_width=True):
+            if st.session_state.get('confirm_clear', False):
+                with st.spinner("Clearing predictions..."):
+                    try:
+                        conn = get_database_connection()
+                        if conn:
+                            cursor = conn.cursor()
+
+                            # Delete all predictions
+                            cursor.execute('DELETE FROM predictions')
+
+                            # Reset analyst stats
+                            cursor.execute('''
+                                UPDATE sources
+                                SET total_predictions = 0,
+                                    correct_predictions = 0,
+                                    accuracy_rate = 0.0
+                            ''')
+
+                            conn.commit()
+                            conn.close()
+
+                            st.success("✅ All predictions cleared!")
+                            st.session_state.confirm_clear = False
+                            st.rerun()
+                    except Exception as e:
+                        st.error(f"Error clearing data: {str(e)}")
+            else:
+                st.session_state.confirm_clear = True
+                st.warning("⚠️ Click again to confirm deletion")
+                st.rerun()
+
+        st.markdown("---")
         st.markdown("### Manual Processing")
         st.caption("Use these steps to process new events:")
 
