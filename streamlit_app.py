@@ -366,25 +366,36 @@ with st.sidebar:
 
     st.markdown("---")
 
-    # Database stats
-    conn = get_database_connection()
-    if conn:
-        cursor = conn.cursor()
+    # Database stats and initialization
+    if not os.path.exists("data/chatmma.db"):
+        st.error("Database not found. Please run: `python scripts/init_database.py`")
 
-        cursor.execute('SELECT COUNT(*) FROM events')
-        num_events = cursor.fetchone()[0]
+        if st.button("🔧 Initialize Database Now", use_container_width=True):
+            with st.spinner("Creating database..."):
+                if init_database_if_needed():
+                    st.success("✅ Database initialized successfully!")
+                    st.rerun()
+                else:
+                    st.error("Failed to initialize database. Check the logs.")
+    else:
+        conn = get_database_connection()
+        if conn:
+            cursor = conn.cursor()
 
-        cursor.execute('SELECT COUNT(*) FROM sources WHERE total_predictions > 0')
-        num_analysts = cursor.fetchone()[0]
+            cursor.execute('SELECT COUNT(*) FROM events')
+            num_events = cursor.fetchone()[0]
 
-        cursor.execute('SELECT COUNT(*) FROM predictions WHERE qa_status = "approved"')
-        num_predictions = cursor.fetchone()[0]
+            cursor.execute('SELECT COUNT(*) FROM sources WHERE total_predictions > 0')
+            num_analysts = cursor.fetchone()[0]
 
-        st.metric("Events", num_events)
-        st.metric("Active Analysts", num_analysts)
-        st.metric("Predictions", num_predictions)
+            cursor.execute('SELECT COUNT(*) FROM predictions WHERE qa_status = "approved"')
+            num_predictions = cursor.fetchone()[0]
 
-        conn.close()
+            st.metric("Events", num_events)
+            st.metric("Active Analysts", num_analysts)
+            st.metric("Predictions", num_predictions)
+
+            conn.close()
 
     st.markdown("---")
     st.markdown("### Navigation")
