@@ -1,0 +1,41 @@
+# ChatMMA Configuration File
+# Copy this to config.yaml and fill in your settings
+
+# Claude API Configuration
+anthropic_api_key: "YOUR_API_KEY_HERE"
+
+# Model Selection
+models:
+  extraction: "claude-haiku-4-5-20251001"  # Cost-effective for extraction
+  chat: "claude-sonnet-4-20250514"          # High quality for chat
+
+# Database
+database:
+  path: "data/chatmma.db"
+
+# Extraction Settings
+extraction:
+  max_content_length: 30000  # Truncate longer content
+  max_tokens: 2000
+  temperature: 0
+
+# Chat Settings
+chat:
+  max_tokens: 800
+  temperature: 0.3
+
+# Anonymity Settings
+anonymity:
+  reveal_names_after_event: true  # Automatically reveal after results entered
+  show_accuracy_tiers: true       # Show "X analysts with 60%+ accuracy"
+
+# Cost Optimization
+optimization:
+  use_summaries: true              # Use pre-computed summaries when available
+  max_example_rationales: 3        # Max example notes per fighter
+  max_tags_per_fighter: 5          # Max tags to include in prompt
+
+# Stats
+stats:
+  min_predictions_for_accuracy: 10  # Min predictions before showing accuracy
+  high_accuracy_threshold: 0.60     # 60%+ is "high accuracy"
