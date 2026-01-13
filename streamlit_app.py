@@ -589,10 +589,35 @@ elif page == "⚙️ Process Event":
 
         selected_event = st.selectbox("Select Event:", events)
 
+        # Quick load sample data button
+        st.info("💡 **Quick Start:** Load sample UFC 323 data to test the app without fetching URLs")
+        if st.button("⚡ Load Sample Data (UFC 323)", type="primary", use_container_width=True):
+            with st.spinner("Loading sample predictions..."):
+                try:
+                    from load_to_db import load_predictions, update_analyst_stats
+                    import glob
+
+                    # Check if sample files exist
+                    sample_files = glob.glob("data/extractions/UFC_323*.json")
+                    if sample_files:
+                        load_predictions("UFC 323")
+                        update_analyst_stats()
+                        st.success(f"✅ Loaded {len(sample_files)} sample predictions for UFC 323!")
+                        st.balloons()
+                        st.rerun()
+                    else:
+                        st.warning("Sample data files not found in data/extractions/")
+                except Exception as e:
+                    st.error(f"Error loading sample data: {str(e)}")
+
+        st.markdown("---")
+        st.markdown("### Manual Processing")
+        st.caption("Use these steps to process new events:")
+
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            if st.button("📥 Fetch Content", type="primary"):
+            if st.button("📥 Fetch Content"):
                 with st.spinner("Fetching articles and transcripts..."):
                     # Import fetch functions
                     from fetch_articles import fetch_all_articles
