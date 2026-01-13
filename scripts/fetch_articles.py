@@ -52,6 +52,7 @@ def fetch_all_articles(event_name=None):
 
     fetched = 0
     failed = 0
+    results = {'success': [], 'failed': []}
 
     for source in sources:
         if source['type'] != 'article':
@@ -76,12 +77,14 @@ def fetch_all_articles(event_name=None):
 
             log(f"✅ Saved: {filepath}")
             fetched += 1
+            results['success'].append(f"{source['name']} ({source['analyst']})")
         else:
             log(f"❌ Failed: {source['name']}", "ERROR")
             failed += 1
+            results['failed'].append(f"{source['name']} ({source['analyst']})")
 
     log(f"Article fetch complete: {fetched} succeeded, {failed} failed")
-    return fetched, failed
+    return fetched, failed, results
 
 if __name__ == "__main__":
     import argparse

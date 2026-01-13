@@ -659,12 +659,35 @@ elif page == "⚙️ Process Event":
                     from fetch_articles import fetch_all_articles
                     from fetch_youtube import fetch_all_transcripts
 
-                    articles_ok, articles_fail = fetch_all_articles(selected_event)
-                    youtube_ok, youtube_fail = fetch_all_transcripts(selected_event)
+                    articles_ok, articles_fail, article_results = fetch_all_articles(selected_event)
+                    youtube_ok, youtube_fail, youtube_results = fetch_all_transcripts(selected_event)
 
-                    st.success(f"✅ Fetched {articles_ok} articles, {youtube_ok} transcripts")
-                    if articles_fail > 0 or youtube_fail > 0:
-                        st.warning(f"⚠️ Failed: {articles_fail} articles, {youtube_fail} transcripts")
+                    # Show summary
+                    total_ok = articles_ok + youtube_ok
+                    total_fail = articles_fail + youtube_fail
+
+                    if total_ok > 0:
+                        st.success(f"✅ Fetched {articles_ok} articles, {youtube_ok} transcripts")
+
+                    # Show detailed results
+                    with st.expander(f"📊 Fetch Details ({total_ok} success, {total_fail} failed)"):
+                        if article_results['success']:
+                            st.write("**✅ Articles Fetched:**")
+                            for source in article_results['success']:
+                                st.write(f"  - {source}")
+
+                        if youtube_results['success']:
+                            st.write("**✅ Transcripts Fetched:**")
+                            for source in youtube_results['success']:
+                                st.write(f"  - {source}")
+
+                        if article_results['failed'] or youtube_results['failed']:
+                            st.write("**❌ Failed Sources:**")
+                            for source in article_results['failed'] + youtube_results['failed']:
+                                st.write(f"  - {source}")
+
+                    if total_fail > 0:
+                        st.warning(f"⚠️ {total_fail} sources failed to fetch")
 
         with col2:
             if st.button("🤖 Extract Predictions"):

@@ -34,7 +34,7 @@ def fetch_transcript(url):
 
     try:
         # Try to get transcript
-        languages = config['youtube']['transcript_languages']
+        languages = config.get('youtube', {}).get('transcript_languages', ['en'])
         transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
 
         # Try manual transcript first
@@ -42,7 +42,7 @@ def fetch_transcript(url):
             transcript = transcript_list.find_manually_created_transcript(languages)
         except:
             # Fall back to auto-generated if configured
-            if config['youtube']['fallback_to_auto_generated']:
+            if config.get('youtube', {}).get('fallback_to_auto_generated', True):
                 transcript = transcript_list.find_generated_transcript(languages)
             else:
                 log(f"No manual transcript available for {video_id}", "ERROR")
@@ -55,7 +55,7 @@ def fetch_transcript(url):
         full_text = ' '.join([item['text'] for item in transcript_data])
 
         # Check length limit
-        max_length = config['youtube']['max_transcript_length']
+        max_length = config.get('youtube', {}).get('max_transcript_length', 50000)
         if len(full_text) > max_length:
             log(f"Transcript too long ({len(full_text)} chars), skipping", "WARNING")
             return None
@@ -72,6 +72,7 @@ def fetch_all_transcripts(event_name=None):
 
     fetched = 0
     failed = 0
+    results = {'success': [], 'failed': []}
 
     for source in sources:
         if source['type'] != 'youtube':
@@ -96,12 +97,14 @@ def fetch_all_transcripts(event_name=None):
 
             log(f"✅ Saved: {filepath}")
             fetched += 1
+            results['success'].append(f"{source['name']} ({source['analyst']})")
         else:
             log(f"❌ Failed: {source['name']}", "ERROR")
             failed += 1
+            results['failed'].append(f"{source['name']} ({source['analyst']})")
 
     log(f"Transcript fetch complete: {fetched} succeeded, {failed} failed")
-    return fetched, failed
+    return fetched, failed, results
 
 if __name__ == "__main__":
     import argparse
