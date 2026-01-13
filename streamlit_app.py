@@ -48,12 +48,195 @@ def get_api_key():
 
     return None
 
+def init_database_if_needed():
+    """Initialize database if it doesn't exist"""
+    db_path = "data/chatmma.db"
+
+    if os.path.exists(db_path):
+        return True
+
+    # Create data directory if it doesn't exist
+    os.makedirs(os.path.dirname(db_path), exist_ok=True)
+
+    try:
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Create all tables
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS events (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL UNIQUE,
+            date DATE NOT NULL,
+            location TEXT,
+            fights_count INTEGER,
+            results_entered BOOLEAN DEFAULT 0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        ''')
+
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS fights (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            event_id INTEGER NOT NULL,
+            fighter_a TEXT NOT NULL,
+            fighter_b TEXT NOT NULL,
+            weight_class TEXT,
+            is_main_card BOOLEAN DEFAULT 0,
+            scheduled_rounds INTEGER,
+            result TEXT,
+            method TEXT,
+            round INTEGER,
+            time TEXT,
+            FOREIGN KEY (event_id) REFERENCES events(id)
+        )
+        ''')
+
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS sources (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL UNIQUE,
+            type TEXT NOT NULL,
+            publication TEXT,
+            analyst TEXT,
+            url TEXT,
+            credibility_score REAL DEFAULT 50.0,
+            total_predictions INTEGER DEFAULT 0,
+            correct_predictions INTEGER DEFAULT 0,
+            accuracy_rate REAL DEFAULT 0.0
+        )
+        ''')
+
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS predictions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            fight_id INTEGER NOT NULL,
+            source_id INTEGER NOT NULL,
+            event_name TEXT NOT NULL,
+            prediction TEXT NOT NULL,
+            method TEXT,
+            analyst_confidence TEXT,
+            extraction_confidence REAL,
+            reasoning TEXT,
+            dfs_note TEXT,
+            qa_status TEXT DEFAULT 'pending',
+            raw_output_path TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (fight_id) REFERENCES fights(id),
+            FOREIGN KEY (source_id) REFERENCES sources(id)
+        )
+        ''')
+
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS fighter_profiles (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            fighter_name TEXT NOT NULL UNIQUE,
+            total_mentions INTEGER DEFAULT 0,
+            traits TEXT,
+            styles TEXT,
+            strengths TEXT,
+            weaknesses TEXT,
+            dfs_notes TEXT,
+            last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        ''')
+
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS api_costs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            model TEXT NOT NULL,
+            input_tokens INTEGER,
+            output_tokens INTEGER,
+            cost_usd REAL,
+            operation TEXT
+        )
+        ''')
+
+        conn.commit()
+        conn.close()
+
+        # Load initial data from YAML files
+        try:
+            from utils import load_yaml
+            import yaml
+
+            # Load events and fights
+            if os.path.exists('fights.yaml'):
+                conn = sqlite3.connect(db_path)
+                cursor = conn.cursor()
+
+                with open('fights.yaml', 'r') as f:
+                    fights_data = yaml.safe_load(f)
+
+                for event in fights_data.get('events', []):
+                    cursor.execute('''
+                        INSERT OR IGNORE INTO events (name, date, location, fights_count)
+                        VALUES (?, ?, ?, ?)
+                    ''', (event['name'], event['date'], event['location'], len(event['fights'])))
+
+                    cursor.execute('SELECT id FROM events WHERE name = ?', (event['name'],))
+                    event_id = cursor.fetchone()[0]
+
+                    for fight in event['fights']:
+                        cursor.execute('''
+                            INSERT OR IGNORE INTO fights
+                            (event_id, fighter_a, fighter_b, weight_class, is_main_card,
+                             scheduled_rounds, result, method, round, time)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        ''', (
+                            event_id,
+                            fight['fighter_a'],
+                            fight['fighter_b'],
+                            fight['weight_class'],
+                            fight.get('is_main_card', False),
+                            fight.get('scheduled_rounds', 3),
+                            fight.get('result'),
+                            fight.get('method'),
+                            fight.get('round'),
+                            fight.get('time')
+                        ))
+
+                conn.commit()
+                conn.close()
+
+            # Load sources
+            if os.path.exists('sources.yaml'):
+                conn = sqlite3.connect(db_path)
+                cursor = conn.cursor()
+
+                with open('sources.yaml', 'r') as f:
+                    sources_data = yaml.safe_load(f)
+
+                for source in sources_data.get('sources', []):
+                    cursor.execute('''
+                        INSERT OR IGNORE INTO sources (name, type, publication, analyst, url)
+                        VALUES (?, ?, ?, ?, ?)
+                    ''', (
+                        source['name'],
+                        source['type'],
+                        source.get('publication', ''),
+                        source.get('analyst', ''),
+                        source['url']
+                    ))
+
+                conn.commit()
+                conn.close()
+        except Exception as e:
+            st.warning(f"Database created but couldn't load initial data: {e}")
+
+        return True
+
+    except Exception as e:
+        st.error(f"Error initializing database: {e}")
+        return False
+
 def get_database_connection():
     """Get database connection"""
-    db_path = "data/chatmma.db"
-    if not os.path.exists(db_path):
-        st.error("Database not found. Please run: `python scripts/init_database.py`")
+    if not init_database_if_needed():
         return None
+
+    db_path = "data/chatmma.db"
     return sqlite3.connect(db_path)
 
 def chat_query(user_query, api_key):
