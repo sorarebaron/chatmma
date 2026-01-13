@@ -1,0 +1,500 @@
+sources:
+  # UFC Vegas 112 - 2025-12-13
+  - name: "Analyst_001"
+    type: article
+    publication: "MMA Fighting"
+    analyst: "Alexander K. Lee"
+    url: "https://www.mmafighting.com/ufc/461345/ufc-vegas-112-predictions"
+    event: "UFC Vegas 112"
+  
+  - name: "Analyst_002"
+    type: article
+    publication: "Yahoo Sports"
+    analyst: "Drake Riggs"
+    url: "https://sports.yahoo.com/mma/article/ufc-vegas-112-preview-and-predictions-is-manel-kape-a-true-title-contender-182303339.html"
+    event: "UFC Vegas 112"
+  
+  - name: "Analyst_003"
+    type: article
+    publication: "RotoWire"
+    analyst: "Christopher Olson"
+    url: "https://www.rotowire.com/mma/article/ufc-vegas-112-preview-and-predictions-the-mma-mashup-100512"
+    event: "UFC Vegas 112"
+  
+  - name: "Analyst_004"
+    type: article
+    publication: "MMA Mania"
+    analyst: "Tim Bissell"
+    url: "https://www.mmamania.com/ufc-odds/408673/ufc-vegas-112-odds-best-betting-props-parlays-and-picks-royval-vs-kape"
+    event: "UFC Vegas 112"
+  
+  - name: "Analyst_005"
+    type: youtube
+    channel: "The MMA Guru"
+    analyst: "The MMA Guru"
+    url: "https://www.youtube.com/watch?v=Z4KxfyKIIKg"
+    event: "UFC Vegas 112"
+  
+  - name: "Analyst_006"
+    type: youtube
+    channel: "We Want Picks"
+    analyst: "We Want Picks"
+    url: "https://www.youtube.com/watch?v=jIOQNyEQBvc"
+    event: "UFC Vegas 112"
+  
+  - name: "Analyst_007"
+    type: youtube
+    channel: "MMA Experts"
+    analyst: "MMA Experts"
+    url: "https://www.youtube.com/watch?v=RzybMLVjiCk"
+    event: "UFC Vegas 112"
+  
+  # UFC 323 - 2025-12-06
+  - name: "Analyst_001"
+    type: article
+    publication: "MMA Fighting"
+    analyst: "Alexander K. Lee"
+    url: "https://www.mmafighting.com/ufc/459215/ufc-323-predictions"
+    event: "UFC 323"
+  
+  - name: "Analyst_002"
+    type: article
+    publication: "Yahoo Sports"
+    analyst: "Drake Riggs"
+    url: "https://sports.yahoo.com/mma/article/ufc-323-predictions-will-merab-dvalishvili-cement-his-status-as-2025-fighter-of-the-year-180801529.html"
+    event: "UFC 323"
+  
+  - name: "Analyst_003"
+    type: article
+    publication: "RotoWire"
+    analyst: "Christopher Olson"
+    url: "https://www.rotowire.com/mma/article/ufc-323-preview-and-predictions-the-mma-mashup-100117"
+    event: "UFC 323"
+  
+  - name: "Analyst_004"
+    type: article
+    publication: "MMA Mania"
+    analyst: "Tim Bissell"
+    url: "https://www.mmamania.com/ufc-events-ppv/405912/ufc-323s-best-betting-props-parlays-and-picks-merab-vs-yan-2"
+    event: "UFC 323"
+  
+  - name: "Analyst_005"
+    type: youtube
+    channel: "The MMA Guru"
+    analyst: "The MMA Guru"
+    url: "https://www.youtube.com/watch?v=R9iUQJldvyk"
+    event: "UFC 323"
+  
+  - name: "Analyst_006"
+    type: youtube
+    channel: "We Want Picks"
+    analyst: "We Want Picks"
+    url: "https://www.youtube.com/watch?v=5vA1J_RL4Fg"
+    event: "UFC 323"
+  
+  - name: "Analyst_007"
+    type: youtube
+    channel: "MMA Experts"
+    analyst: "MMA Experts"
+    url: "https://www.youtube.com/watch?v=jJaIckiXxqc"
+    event: "UFC 323"
+  
+  # UFC Qatar - 2025-11-22
+  - name: "Analyst_001"
+    type: article
+    publication: "MMA Fighting"
+    analyst: "Alexander K. Lee"
+    url: "https://www.mmafighting.com/ufc/457765/ufc-qatar-predictions"
+    event: "UFC Qatar"
+  
+  - name: "Analyst_002"
+    type: article
+    publication: "Yahoo Sports"
+    analyst: "Drake Riggs"
+    url: "https://sports.yahoo.com/mma/article/ufc-qatar-preview-and-predictions-arman-tsarukayn-or-dan-hooker--who-earns-a-title-shot-164018442.html"
+    event: "UFC Qatar"
+  
+  - name: "Analyst_003"
+    type: article
+    publication: "RotoWire"
+    analyst: "Christopher Olson"
+    url: "https://www.rotowire.com/mma/article/ufc-qatar-preview-and-predictions-the-mma-mashup-99143"
+    event: "UFC Qatar"
+  
+  - name: "Analyst_004"
+    type: article
+    publication: "MMA Mania"
+    analyst: "Tim Bissell"
+    url: "https://www.mmamania.com/ufc-odds/403987/ufc-qatars-best-betting-props-parlays-and-picks-tsarukyan-vs-hooker"
+    event: "UFC Qatar"
+  
+  - name: "Analyst_005"
+    type: youtube
+    channel: "The MMA Guru"
+    analyst: "The MMA Guru"
+    url: "https://www.youtube.com/watch?v=1J8uGvcHF9s"
+    event: "UFC Qatar"
+  
+  - name: "Analyst_006"
+    type: youtube
+    channel: "We Want Picks"
+    analyst: "We Want Picks"
+    url: "https://www.youtube.com/watch?v=W6AB8iq2SFs"
+    event: "UFC Qatar"
+  
+  - name: "Analyst_007"
+    type: youtube
+    channel: "MMA Experts"
+    analyst: "MMA Experts"
+    url: "https://www.youtube.com/watch?v=9VmB5oPzB1w"
+    event: "UFC Qatar"
+  
+  # UFC 322 - 2025-11-15
+  - name: "Analyst_001"
+    type: article
+    publication: "MMA Fighting"
+    analyst: "Alexander K. Lee"
+    url: "https://www.mmafighting.com/ufc/456140/ufc-322-predictions"
+    event: "UFC 322"
+  
+  - name: "Analyst_002"
+    type: article
+    publication: "Yahoo Sports"
+    analyst: "Drake Riggs"
+    url: "https://sports.yahoo.com/mma/article/ufc-322-predictions-will-islam-makhachev-and-zhang-weili-make-history-172918692.html"
+    event: "UFC 322"
+  
+  - name: "Analyst_003"
+    type: article
+    publication: "RotoWire"
+    analyst: "Christopher Olson"
+    url: "https://www.rotowire.com/mma/article/ufc-322-preview-and-predictions-the-mma-mashup-98717"
+    event: "UFC 322"
+  
+  - name: "Analyst_004"
+    type: article
+    publication: "MMA Mania"
+    analyst: "Tim Bissell"
+    url: "https://www.mmamania.com/ufc-events-ppv/401362/ufc-322s-best-betting-props-parlays-and-picks-della-maddalena-vs-makhachev"
+    event: "UFC 322"
+  
+  - name: "Analyst_005"
+    type: youtube
+    channel: "The MMA Guru"
+    analyst: "The MMA Guru"
+    url: "https://www.youtube.com/watch?v=gf4PLtU7rWo"
+    event: "UFC 322"
+  
+  - name: "Analyst_006"
+    type: youtube
+    channel: "We Want Picks"
+    analyst: "We Want Picks"
+    url: "https://www.youtube.com/watch?v=V1ZnOcVNf7w"
+    event: "UFC 322"
+  
+  - name: "Analyst_007"
+    type: youtube
+    channel: "MMA Experts"
+    analyst: "MMA Experts"
+    url: "https://www.youtube.com/watch?v=Gjrg3KjDE9U"
+    event: "UFC 322"
+  
+  # UFC Vegas 111 - 2025-11-08
+  - name: "Analyst_001"
+    type: article
+    publication: "MMA Fighting"
+    analyst: "Alexander K. Lee"
+    url: "https://www.mmafighting.com/ufc/454123/ufc-vegas-111-predictions"
+    event: "UFC Vegas 111"
+  
+  - name: "Analyst_002"
+    type: article
+    publication: "Yahoo Sports"
+    analyst: "Drake Riggs"
+    url: "https://sports.yahoo.com/mma/article/ufc-vegas-111-preview-and-predictions-randy-brown-or-gabriel-bonfim-whos-a-legit-contender-195204364.html"
+    event: "UFC Vegas 111"
+  
+  - name: "Analyst_003"
+    type: article
+    publication: "RotoWire"
+    analyst: "Christopher Olson"
+    url: "https://www.rotowire.com/mma/article/ufc-vegas-111-preview-and-predictions-the-mma-mashup-98356"
+    event: "UFC Vegas 111"
+  
+  - name: "Analyst_004"
+    type: article
+    publication: "MMA Mania"
+    analyst: "Tim Bissell"
+    url: "https://www.mmamania.com/ufc-odds/400535/ufc-vegas-111-odds-best-betting-props-parlays-and-picks-bonfim-vs-brown"
+    event: "UFC Vegas 111"
+  
+  - name: "Analyst_005"
+    type: youtube
+    channel: "The MMA Guru"
+    analyst: "The MMA Guru"
+    url: "https://www.youtube.com/watch?v=QPLK1OldTCU"
+    event: "UFC Vegas 111"
+  
+  - name: "Analyst_006"
+    type: youtube
+    channel: "We Want Picks"
+    analyst: "We Want Picks"
+    url: "https://www.youtube.com/watch?v=5fGuEmhiSM8"
+    event: "UFC Vegas 111"
+  
+  - name: "Analyst_007"
+    type: youtube
+    channel: "MMA Experts"
+    analyst: "MMA Experts"
+    url: "https://www.youtube.com/watch?v=j2j7N1DH27k"
+    event: "UFC Vegas 111"
+  
+  # UFC Vegas 110 - 2025-11-01
+  - name: "Analyst_001"
+    type: article
+    publication: "MMA Fighting"
+    analyst: "Alexander K. Lee"
+    url: "https://www.mmafighting.com/ufc/452827/ufc-vegas-110-predictions"
+    event: "UFC Vegas 110"
+  
+  - name: "Analyst_002"
+    type: article
+    publication: "Yahoo Sports"
+    analyst: "Drake Riggs"
+    url: "https://sports.yahoo.com/mma/article/ufc-vegas-110-preview-and-predictions-steve-garcia-or-david-onama-who-breaks-through-182752062.html"
+    event: "UFC Vegas 110"
+  
+  - name: "Analyst_003"
+    type: article
+    publication: "RotoWire"
+    analyst: "Christopher Olson"
+    url: "https://www.rotowire.com/mma/article/ufc-vegas-110-preview-and-predictions-the-mma-mashup-98004"
+    event: "UFC Vegas 110"
+  
+  - name: "Analyst_004"
+    type: article
+    publication: "MMA Mania"
+    analyst: "Tim Bissell"
+    url: "https://www.mmamania.com/ufc-odds/398902/ufc-vegas-110-odds-best-betting-props-parlays-and-picks-garcia-vs-onama"
+    event: "UFC Vegas 110"
+  
+  - name: "Analyst_005"
+    type: youtube
+    channel: "The MMA Guru"
+    analyst: "The MMA Guru"
+    url: "https://www.youtube.com/watch?v=3LG9-YM1AVQ"
+    event: "UFC Vegas 110"
+  
+  - name: "Analyst_006"
+    type: youtube
+    channel: "We Want Picks"
+    analyst: "We Want Picks"
+    url: "https://www.youtube.com/watch?v=FqrCF4Fb7EU"
+    event: "UFC Vegas 110"
+  
+  - name: "Analyst_007"
+    type: youtube
+    channel: "MMA Experts"
+    analyst: "MMA Experts"
+    url: "https://www.youtube.com/watch?v=UclWQ-HcncE"
+    event: "UFC Vegas 110"
+  
+  # UFC 321 - 2025-10-25
+  - name: "Analyst_001"
+    type: article
+    publication: "MMA Fighting"
+    analyst: "Alexander K. Lee"
+    url: "https://www.mmafighting.com/ufc-events-ppv/451676/ufc-321-predictions"
+    event: "UFC 321"
+  
+  - name: "Analyst_002"
+    type: article
+    publication: "Yahoo Sports"
+    analyst: "Drake Riggs"
+    url: "https://sports.yahoo.com/mma/article/ufc-321-predictions-is-tom-aspinall-about-to-start-a-historic-heavyweight-run-154311977.html"
+    event: "UFC 321"
+  
+  - name: "Analyst_003"
+    type: article
+    publication: "RotoWire"
+    analyst: "Christopher Olson"
+    url: "https://www.rotowire.com/mma/article/ufc-321-preview-and-predictions-the-mma-mashup-97655"
+    event: "UFC 321"
+  
+  - name: "Analyst_004"
+    type: article
+    publication: "MMA Mania"
+    analyst: "Tim Bissell"
+    url: "https://www.mmamania.com/ufc-events-ppv/397149/ufc-321s-best-betting-props-parlays-and-picks-aspinall-vs-gane"
+    event: "UFC 321"
+  
+  - name: "Analyst_005"
+    type: youtube
+    channel: "The MMA Guru"
+    analyst: "The MMA Guru"
+    url: "https://www.youtube.com/watch?v=xLJYQOFVX9c"
+    event: "UFC 321"
+  
+  - name: "Analyst_006"
+    type: youtube
+    channel: "We Want Picks"
+    analyst: "We Want Picks"
+    url: "https://www.youtube.com/watch?v=KGBgDOH6Z0Q"
+    event: "UFC 321"
+  
+  - name: "Analyst_007"
+    type: youtube
+    channel: "MMA Experts"
+    analyst: "MMA Experts"
+    url: "https://www.youtube.com/watch?v=ZrR_Q2wUTfE"
+    event: "UFC 321"
+  
+  # UFC Vancouver - 2025-10-18
+  - name: "Analyst_001"
+    type: article
+    publication: "MMA Fighting"
+    analyst: "Alexander K. Lee"
+    url: "https://www.mmafighting.com/ufc/450302/ufc-vancouver-predictions"
+    event: "UFC Vancouver"
+  
+  - name: "Analyst_002"
+    type: article
+    publication: "Yahoo Sports"
+    analyst: "Drake Riggs"
+    url: "https://sports.yahoo.com/mma/article/ufc-vancouver-predictions-odds-picks-can-reinier-de-ridder-earn-a-title-shot-150058338.html"
+    event: "UFC Vancouver"
+  
+  - name: "Analyst_003"
+    type: article
+    publication: "RotoWire"
+    analyst: "Christopher Olson"
+    url: "https://www.rotowire.com/mma/article/ufc-vancouver-preview-and-predictions-the-mma-mashup-97326"
+    event: "UFC Vancouver"
+  
+  - name: "Analyst_004"
+    type: article
+    publication: "MMA Mania"
+    analyst: "Tim Bissell"
+    url: "https://www.mmamania.com/ufc-odds/395780/ufc-vancouver-odds-best-betting-props-parlays-and-picks-de-ridder-vs-allen"
+    event: "UFC Vancouver"
+  
+  - name: "Analyst_005"
+    type: youtube
+    channel: "The MMA Guru"
+    analyst: "The MMA Guru"
+    url: "https://www.youtube.com/watch?v=wYHcoy1F3q0"
+    event: "UFC Vancouver"
+  
+  - name: "Analyst_006"
+    type: youtube
+    channel: "We Want Picks"
+    analyst: "We Want Picks"
+    url: "https://www.youtube.com/watch?v=Snt4_puDD8A"
+    event: "UFC Vancouver"
+  
+  - name: "Analyst_007"
+    type: youtube
+    channel: "MMA Experts"
+    analyst: "MMA Experts"
+    url: "https://www.youtube.com/watch?v=97jiTk6YzIE"
+    event: "UFC Vancouver"
+  
+  # UFC Rio - 2025-10-11
+  - name: "Analyst_001"
+    type: article
+    publication: "MMA Fighting"
+    analyst: "Alexander K. Lee"
+    url: "https://www.mmafighting.com/ufc/449432/ufc-rio-predictions"
+    event: "UFC Rio"
+  
+  - name: "Analyst_002"
+    type: article
+    publication: "Yahoo Sports"
+    analyst: "Drake Riggs"
+    url: "https://sports.yahoo.com/mma/article/ufc-rio-preview-predictions-odds-full-card-picks-can-charles-oliveira-go-18-0-in-brazil-180945215.html"
+    event: "UFC Rio"
+  
+  - name: "Analyst_003"
+    type: article
+    publication: "RotoWire"
+    analyst: "Christopher Olson"
+    url: "https://www.rotowire.com/mma/article/ufc-rio-preview-and-predictions-the-mma-mashup-97048"
+    event: "UFC Rio"
+  
+  - name: "Analyst_004"
+    type: article
+    publication: "MMA Mania"
+    analyst: "Tim Bissell"
+    url: "https://www.mmamania.com/ufc-odds/394267/ufc-rio-odds-best-betting-props-parlays-and-picks-oliveira-vs-gamrot"
+    event: "UFC Rio"
+  
+  - name: "Analyst_005"
+    type: youtube
+    channel: "The MMA Guru"
+    analyst: "The MMA Guru"
+    url: "https://www.youtube.com/watch?v=hL3ys0SYLKw"
+    event: "UFC Rio"
+  
+  - name: "Analyst_006"
+    type: youtube
+    channel: "We Want Picks"
+    analyst: "We Want Picks"
+    url: "https://www.youtube.com/watch?v=-hBuQEPFGDk"
+    event: "UFC Rio"
+  
+  - name: "Analyst_007"
+    type: youtube
+    channel: "MMA Experts"
+    analyst: "MMA Experts"
+    url: "https://www.youtube.com/watch?v=AwGj1StwU-c"
+    event: "UFC Rio"
+  
+  # UFC 320 - 2025-10-04
+  - name: "Analyst_001"
+    type: article
+    publication: "MMA Fighting"
+    analyst: "Alexander K. Lee"
+    url: "https://www.mmafighting.com/ufc/406542/ufc-320-predictions"
+    event: "UFC 320"
+  
+  - name: "Analyst_002"
+    type: article
+    publication: "Yahoo Sports"
+    analyst: "Drake Riggs"
+    url: "https://sports.yahoo.com/mma/article/ufc-320-predictions-odds-full-card-preview-will-alex-pereira-find-redemption-against-magomed-ankalaev-175433453.html"
+    event: "UFC 320"
+  
+  - name: "Analyst_003"
+    type: article
+    publication: "RotoWire"
+    analyst: "Christopher Olson"
+    url: "https://www.rotowire.com/mma/article/ufc-320-preview-and-predictions-the-mma-mashup-96776"
+    event: "UFC 320"
+  
+  - name: "Analyst_004"
+    type: article
+    publication: "MMA Mania"
+    analyst: "Tim Bissell"
+    url: "https://www.mmamania.com/ufc-events-ppv/391678/ufc-320s-best-betting-props-parlays-and-picks-ankalaev-vs-pereira-2"
+    event: "UFC 320"
+  
+  - name: "Analyst_005"
+    type: youtube
+    channel: "The MMA Guru"
+    analyst: "The MMA Guru"
+    url: "https://www.youtube.com/watch?v=DU4GOCZ0bFk"
+    event: "UFC 320"
+  
+  - name: "Analyst_006"
+    type: youtube
+    channel: "We Want Picks"
+    analyst: "We Want Picks"
+    url: "https://www.youtube.com/watch?v=7Dfr-fWr07w"
+    event: "UFC 320"
+  
+  - name: "Analyst_007"
+    type: youtube
+    channel: "MMA Experts"
+    analyst: "MMA Experts"
+    url: "https://www.youtube.com/watch?v=LuGM9mDZa5U"
+    event: "UFC 320"
