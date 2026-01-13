@@ -105,7 +105,18 @@ Pre-computes fight summaries for instant chatbot responses.
 
 ## 💬 Using the Chatbot
 
-### Interactive Mode
+### Web Interface (Streamlit)
+
+**Deployed at:** [chatmma.streamlit.app](https://chatmma.streamlit.app)
+
+Run locally:
+```bash
+streamlit run streamlit_app.py
+```
+
+See [STREAMLIT_DEPLOYMENT.md](STREAMLIT_DEPLOYMENT.md) for deployment instructions.
+
+### CLI Interactive Mode
 
 ```bash
 python scripts/chatbot.py
