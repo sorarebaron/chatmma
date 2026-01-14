@@ -1,10 +1,79 @@
 import sqlite3
 import csv
+import os
+from pathlib import Path
 
-conn = sqlite3.connect("chatmma.db")
+# First try to create empty database with schema
+conn = sqlite3.connect("data/chatmma.db")
 cursor = conn.cursor()
 
-with open("ChatMMAPredictions.csv") as f:
+# Create schema if needed
+cursor.executescript("""
+CREATE TABLE IF NOT EXISTS events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE,
+    date DATE NOT NULL,
+    location TEXT,
+    results_entered BOOLEAN DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS fights (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    event_id INTEGER NOT NULL,
+    fighter_a TEXT NOT NULL,
+    fighter_b TEXT NOT NULL,
+    weight_class TEXT,
+    is_main_card BOOLEAN DEFAULT 0,
+    scheduled_rounds INTEGER DEFAULT 3,
+    result TEXT,
+    method TEXT,
+    round INTEGER,
+    time TEXT,
+    FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS analysts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE,
+    real_name TEXT,
+    type TEXT NOT NULL,
+    publication TEXT,
+    url TEXT,
+    total_predictions INTEGER DEFAULT 0,
+    correct_predictions INTEGER DEFAULT 0,
+    accuracy_rate REAL DEFAULT 0.0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS predictions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fight_id INTEGER NOT NULL,
+    analyst_id INTEGER NOT NULL,
+    pick TEXT NOT NULL,
+    confidence TEXT,
+    method TEXT,
+    context_tags TEXT,
+    notes TEXT,
+    extraction_confidence REAL DEFAULT 100.0,
+    qa_status TEXT DEFAULT 'approved',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (fight_id) REFERENCES fights(id) ON DELETE CASCADE,
+    FOREIGN KEY (analyst_id) REFERENCES analysts(id) ON DELETE CASCADE
+);
+""")
+conn.commit()
+
+# Look for CSV on Desktop
+desktop_path = Path.home() / "Desktop" / "ChatMMAPredictions.csv"
+if not desktop_path.exists():
+    print(f"❌ CSV not found at: {desktop_path}")
+    print("Please make sure ChatMMAPredictions.csv is on your Desktop")
+    exit(1)
+
+print(f"Loading CSV from: {desktop_path}")
+
+with open(desktop_path, encoding='utf-8-sig', errors='ignore') as f:
     reader = csv.DictReader(f)
     for row in reader:
         # Get event
@@ -54,10 +123,16 @@ with open("ChatMMAPredictions.csv") as f:
             continue
 
         # Insert prediction
-        cursor.execute("INSERT INTO predictions (fight_id, analyst_id, pick, notes, qa_status) VALUES (?, ?, ?, ?, 'approved')",
-                      (fight_id, analyst_id, pick, row['context']))
-        print(f"✓ {analyst_name}: {pick_name} for {fighter_a} vs {fighter_b}")
+        try:
+            cursor.execute("INSERT INTO predictions (fight_id, analyst_id, pick, notes, qa_status) VALUES (?, ?, ?, ?, 'approved')",
+                          (fight_id, analyst_id, pick, row.get('context', '')))
+            print(f"✓ {analyst_name}: {pick_name} for {fighter_a} vs {fighter_b}")
+        except Exception as e:
+            print(f"⚠️  Error adding prediction: {e}")
+            continue
 
 conn.commit()
 conn.close()
-print("\nAll data loaded!")
+print("\n✅ All data loaded!")
+print(f"📁 Database saved to: data/chatmma.db")
+print("\n📤 Next step: Upload data/chatmma.db to GitHub at the data/ folder")
