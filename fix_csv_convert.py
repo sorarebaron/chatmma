@@ -184,12 +184,12 @@ with open(temp_csv, 'r', encoding='utf-8') as f:
             cursor.execute("SELECT id FROM analysts WHERE name = ?", (analyst_name,))
             analyst_id = cursor.fetchone()[0]
 
-            # Pick
+            # Pick - check both directions (pick in fighter name OR fighter name in pick)
             pick_name = row['pick'].strip()
 
-            if fighter_a.lower() in pick_name.lower():
+            if fighter_a.lower() in pick_name.lower() or pick_name.lower() in fighter_a.lower():
                 pick = 'fighter_a'
-            elif fighter_b.lower() in pick_name.lower():
+            elif fighter_b.lower() in pick_name.lower() or pick_name.lower() in fighter_b.lower():
                 pick = 'fighter_b'
             else:
                 print(f"Line {i}: Cannot match pick '{pick_name}' to {fighter_a} vs {fighter_b}, skipping")
