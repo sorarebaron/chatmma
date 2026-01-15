@@ -255,6 +255,34 @@ class QueryOptimizer:
         conn.close()
         return events
 
+    def get_lightweight_context(self):
+        """
+        Get minimal context about available data (for fallback queries).
+        Returns just event names and fight matchups - very token efficient.
+        """
+        conn = self._get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT e.name, e.date, f.fighter_a, f.fighter_b
+            FROM events e
+            JOIN fights f ON f.event_id = e.id
+            ORDER BY e.date DESC, f.id
+        """)
+
+        data = {}
+        for row in cursor.fetchall():
+            event_name = row[0]
+            if event_name not in data:
+                data[event_name] = {
+                    'date': row[1],
+                    'fights': []
+                }
+            data[event_name]['fights'].append(f"{row[2]} vs {row[3]}")
+
+        conn.close()
+        return data
+
     def get_event_predictions_summary(self, event_name):
         """Get summary of all predictions for an event."""
         conn = self._get_connection()

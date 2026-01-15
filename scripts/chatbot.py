@@ -182,9 +182,12 @@ class ChatMMA:
                 }
             }
 
-        # General question
+        # General question - provide lightweight context as fallback
         else:
-            prompt = self.generator.build_general_prompt(user_question)
+            # Get minimal context about available data
+            lightweight_context = self.optimizer.get_lightweight_context()
+
+            prompt = self.generator.build_general_prompt(user_question, lightweight_context)
 
             response = self.client.messages.create(
                 model=self.model,
@@ -196,9 +199,9 @@ class ChatMMA:
 
             return {
                 "answer": answer,
-                "context": None,
+                "context": lightweight_context,
                 "metadata": {
-                    "query_type": "general",
+                    "query_type": "general_with_context",
                     "prompt_length": len(prompt),
                     "tokens_used": response.usage.input_tokens + response.usage.output_tokens,
                     "cost_estimate": self._estimate_cost(response.usage)

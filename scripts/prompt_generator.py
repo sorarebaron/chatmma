@@ -147,20 +147,45 @@ RESPONSE:
         return prompt
 
     @staticmethod
-    def build_general_prompt(user_question):
+    def build_general_prompt(user_question, lightweight_context=None):
         """
-        Build prompt for general questions not tied to specific fights.
+        Build prompt for general questions with optional lightweight context.
+
+        Args:
+            user_question: User's question
+            lightweight_context: Optional dict with available events/fights
         """
-        prompt = f"""You are ChatMMA, an AI assistant for MMA predictions.
+        prompt = f"""You are ChatMMA, an AI assistant that knows MMA analyst predictions.
 
-The user asked: {user_question}
+USER QUESTION: {user_question}
+"""
 
+        if lightweight_context:
+            prompt += "\nAVAILABLE DATA:\n"
+            for event_name, event_data in lightweight_context.items():
+                prompt += f"\n{event_name} ({event_data['date']}):\n"
+                for fight in event_data['fights']:
+                    prompt += f"  - {fight}\n"
+
+            prompt += """
+INSTRUCTIONS:
+1. Check if the user's question is about any of the fights or events listed above
+2. If YES: Tell them you have analyst predictions for that fight/event and ask them to rephrase more specifically (e.g., "Who will win X vs Y?")
+3. If NO: Provide a helpful general response and let them know they can ask about any of the available fights
+
+Use the tagline: "ChatMMA knows who every public analyst picked. AMA!"
+
+RESPONSE:
+"""
+        else:
+            prompt += """
 This appears to be a general question. Respond helpfully and direct them to ask about specific fights or events if appropriate.
 
 Use the marketing message: "ChatMMA knows who every public analyst picked. AMA!"
 
 RESPONSE:
 """
+
         return prompt
 
 
