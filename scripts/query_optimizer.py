@@ -231,6 +231,30 @@ class QueryOptimizer:
 
         return context
 
+    def get_all_events(self):
+        """Get all events from database, ordered by date (most recent first)."""
+        conn = self._get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT id, name, date, location, results_entered
+            FROM events
+            ORDER BY date DESC
+        """)
+
+        events = []
+        for row in cursor.fetchall():
+            events.append({
+                'id': row[0],
+                'name': row[1],
+                'date': row[2],
+                'location': row[3],
+                'results_entered': row[4]
+            })
+
+        conn.close()
+        return events
+
     def get_event_predictions_summary(self, event_name):
         """Get summary of all predictions for an event."""
         conn = self._get_connection()

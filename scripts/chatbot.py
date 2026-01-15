@@ -23,6 +23,39 @@ class ChatMMA:
         self.optimizer = QueryOptimizer(db_path)
         self.generator = PromptGenerator()
 
+    def detect_event_query(self, question):
+        """
+        Detect if question is about an event (not a specific fight).
+        Returns event_name or None.
+        """
+        question_lower = question.lower()
+
+        # Patterns that suggest event-level query
+        event_patterns = ["top picks", "consensus picks", "main card", "full card", "event predictions"]
+
+        # Check if any pattern matches
+        is_event_query = any(pattern in question_lower for pattern in event_patterns)
+
+        if is_event_query:
+            # Try to extract event name from known events
+            events = self.optimizer.get_all_events()
+            for event in events:
+                event_name_lower = event['name'].lower()
+                # Check if event name appears in question
+                if event_name_lower in question_lower:
+                    return event['name']
+
+                # Also check for variations like "ufc vegas 112" matching "UFC Vegas 112"
+                words = event_name_lower.split()
+                if all(word in question_lower for word in words):
+                    return event['name']
+
+            # If no specific event found but it's an event query, return the most recent event
+            if events:
+                return events[0]['name']
+
+        return None
+
     def detect_fight_query(self, question):
         """
         Detect if question is about a specific fight.
@@ -57,6 +90,12 @@ class ChatMMA:
         Returns:
             dict with answer, context, and metadata
         """
+        # Detect if question is about an event
+        if not event_name:
+            detected_event = self.detect_event_query(user_question)
+            if detected_event:
+                event_name = detected_event
+
         # Detect if question is about a specific fight
         fight_info = self.detect_fight_query(user_question)
 

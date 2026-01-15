@@ -71,15 +71,23 @@ PREDICTION SUMMARY:
             for i, note in enumerate(b_context['example_rationales'][:2], 1):
                 prompt += f"{i}. {note[:200]}...\n"
 
-        # Add accuracy info (but maintain anonymity if needed)
-        if not analyst_info.get('reveal_names', False):
-            prompt += f"\nANALYST ACCURACY (ANONYMOUS):\n"
-            prompt += f"- {analyst_info.get('fighter_a_high_accuracy_count', 0)} analysts with 60%+ accuracy picked {fight['fighter_a']}\n"
-            prompt += f"- {analyst_info.get('fighter_b_high_accuracy_count', 0)} analysts with 60%+ accuracy picked {fight['fighter_b']}\n"
-        else:
-            prompt += f"\nTOP ANALYSTS:\n"
-            prompt += f"For {fight['fighter_a']}: {', '.join(analyst_info.get('top_analysts_a', [])[:3])}\n"
-            prompt += f"For {fight['fighter_b']}: {', '.join(analyst_info.get('top_analysts_b', [])[:3])}\n"
+        # Add accuracy info only if available (results must be entered first)
+        a_high_acc = analyst_info.get('fighter_a_high_accuracy_count', 0)
+        b_high_acc = analyst_info.get('fighter_b_high_accuracy_count', 0)
+
+        if a_high_acc > 0 or b_high_acc > 0:
+            if not analyst_info.get('reveal_names', False):
+                prompt += f"\nANALYST ACCURACY (ANONYMOUS):\n"
+                if a_high_acc > 0:
+                    prompt += f"- {a_high_acc} analysts with 60%+ accuracy picked {fight['fighter_a']}\n"
+                if b_high_acc > 0:
+                    prompt += f"- {b_high_acc} analysts with 60%+ accuracy picked {fight['fighter_b']}\n"
+            else:
+                prompt += f"\nTOP ANALYSTS:\n"
+                if analyst_info.get('top_analysts_a'):
+                    prompt += f"For {fight['fighter_a']}: {', '.join(analyst_info.get('top_analysts_a', [])[:3])}\n"
+                if analyst_info.get('top_analysts_b'):
+                    prompt += f"For {fight['fighter_b']}: {', '.join(analyst_info.get('top_analysts_b', [])[:3])}\n"
 
         prompt += """
 INSTRUCTIONS:
