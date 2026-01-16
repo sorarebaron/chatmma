@@ -23,59 +23,118 @@ class ChatMMA:
         self.optimizer = QueryOptimizer(db_path)
         self.generator = PromptGenerator()
 
+        # Cache entities for semantic matching
+        self._cache_entities()
+
+    def _cache_entities(self):
+        """Cache all fighter names, events, and fights for semantic matching."""
+        import sqlite3
+        conn = sqlite3.connect(self.optimizer.db_path)
+        cursor = conn.cursor()
+
+        # Cache events
+        cursor.execute("SELECT id, name FROM events")
+        self.events = {row[0]: row[1] for row in cursor.fetchall()}
+
+        # Cache fights with fighter names
+        cursor.execute("""
+            SELECT f.id, f.fighter_a, f.fighter_b, f.event_id
+            FROM fights f
+        """)
+        self.fights = {}
+        self.fighter_to_fights = {}  # Map fighter name → list of fight IDs
+
+        for row in cursor.fetchall():
+            fight_id, fighter_a, fighter_b, event_id = row
+            self.fights[fight_id] = {
+                'fighter_a': fighter_a,
+                'fighter_b': fighter_b,
+                'event_id': event_id
+            }
+
+            # Build reverse index: fighter name → fights they're in
+            for fighter in [fighter_a, fighter_b]:
+                # Store full name
+                if fighter not in self.fighter_to_fights:
+                    self.fighter_to_fights[fighter] = []
+                self.fighter_to_fights[fighter].append(fight_id)
+
+                # Also store last name for partial matching
+                last_name = fighter.split()[-1] if ' ' in fighter else fighter
+                if last_name not in self.fighter_to_fights:
+                    self.fighter_to_fights[last_name] = []
+                self.fighter_to_fights[last_name].append(fight_id)
+
+        conn.close()
+
     def detect_event_query(self, question):
         """
-        Detect if question is about an event (not a specific fight).
+        Detect if question is about an event using semantic matching.
         Returns event_name or None.
         """
         question_lower = question.lower()
 
-        # Patterns that suggest event-level query
-        event_patterns = ["top picks", "consensus picks", "main card", "full card", "event predictions"]
+        # Patterns that suggest event-level query (not fight-specific)
+        event_patterns = ["top picks", "consensus picks", "main card", "full card", "event predictions", "all fights"]
 
-        # Check if any pattern matches
+        # Check if any event-level pattern matches
         is_event_query = any(pattern in question_lower for pattern in event_patterns)
 
         if is_event_query:
-            # Try to extract event name from known events
-            events = self.optimizer.get_all_events()
-            for event in events:
-                event_name_lower = event['name'].lower()
+            # Try to match event names semantically
+            for event_id, event_name in self.events.items():
+                event_name_lower = event_name.lower()
+
                 # Check if event name appears in question
                 if event_name_lower in question_lower:
-                    return event['name']
+                    return event_name
 
-                # Also check for variations like "ufc vegas 112" matching "UFC Vegas 112"
+                # Check for partial matches (e.g., "vegas 112" matching "UFC Vegas 112")
                 words = event_name_lower.split()
-                if all(word in question_lower for word in words):
-                    return event['name']
+                if len(words) >= 2 and all(word in question_lower for word in words):
+                    return event_name
 
             # If no specific event found but it's an event query, return the most recent event
-            if events:
-                return events[0]['name']
+            if self.events:
+                events = self.optimizer.get_all_events()
+                if events:
+                    return events[0]['name']
 
         return None
 
     def detect_fight_query(self, question):
         """
-        Detect if question is about a specific fight.
+        Detect if question is about a specific fight using semantic matching.
         Returns (fighter_a, fighter_b, event_name) or None.
         """
-        # Simple detection - can be enhanced with NLP
         question_lower = question.lower()
 
-        # Common patterns
-        vs_patterns = [" vs ", " versus ", " v ", " against "]
-        for pattern in vs_patterns:
-            if pattern in question_lower:
-                parts = question_lower.split(pattern)
-                if len(parts) == 2:
-                    fighter_a = parts[0].strip().split()[-1]  # Last word before "vs"
-                    fighter_b = parts[1].strip().split()[0]   # First word after "vs"
-                    return (fighter_a.title(), fighter_b.title(), None)
+        # Find all fighter names mentioned in the question
+        mentioned_fighters = []
+        for fighter_name in self.fighter_to_fights.keys():
+            if fighter_name.lower() in question_lower:
+                mentioned_fighters.append(fighter_name)
 
-        # Otherwise, try to extract fighter names from database
-        # This is a simple implementation - you can enhance it
+        # If we found 2+ fighters, check if any pair shares a fight
+        if len(mentioned_fighters) >= 2:
+            # Try to find a fight that contains any two mentioned fighters
+            for i, fighter1 in enumerate(mentioned_fighters):
+                fights1 = set(self.fighter_to_fights.get(fighter1, []))
+
+                for fighter2 in mentioned_fighters[i+1:]:
+                    fights2 = set(self.fighter_to_fights.get(fighter2, []))
+
+                    # Find common fights
+                    common_fights = fights1 & fights2
+
+                    if common_fights:
+                        # Get the first common fight
+                        fight_id = list(common_fights)[0]
+                        fight = self.fights[fight_id]
+                        event_name = self.events.get(fight['event_id'])
+
+                        return (fight['fighter_a'], fight['fighter_b'], event_name)
+
         return None
 
     def answer_question(self, user_question, event_name=None, reveal_names=False):
