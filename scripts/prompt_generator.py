@@ -188,6 +188,62 @@ RESPONSE:
 
         return prompt
 
+    @staticmethod
+    def build_comprehensive_prompt(full_context, user_question):
+        """
+        Build prompt with full event context (for events with <50 fights).
+
+        Args:
+            full_context: Dict with event info and all fights/predictions
+            user_question: User's natural language question
+
+        Returns:
+            Comprehensive prompt with all data
+        """
+        event = full_context
+
+        prompt = f"""You are ChatMMA, an AI that synthesizes MMA analyst predictions.
+
+USER QUESTION: {user_question}
+
+EVENT: {event['event_name']} - {event['event_date']}
+Location: {event['event_location']}
+Total Fights: {len(event['fights'])}
+
+"""
+
+        # Add all fights with predictions
+        for fight in event['fights']:
+            prompt += f"\n{'='*60}\n"
+            prompt += f"FIGHT: {fight['fighter_a']} vs {fight['fighter_b']}\n"
+            prompt += f"Weight Class: {fight['weight_class']}\n"
+            prompt += f"Consensus: {fight['picks_for_a']} analysts pick {fight['fighter_a']}, {fight['picks_for_b']} pick {fight['fighter_b']}\n"
+
+            if fight['predictions']:
+                prompt += f"\nANALYST PREDICTIONS:\n"
+                for pred in fight['predictions']:
+                    pick_name = fight['fighter_a'] if pred['pick'] == 'fighter_a' else fight['fighter_b']
+                    prompt += f"- {pred['analyst']}: {pick_name}\n"
+                    if pred['notes']:
+                        # Truncate very long notes
+                        notes = pred['notes'][:150] + "..." if len(pred['notes']) > 150 else pred['notes']
+                        prompt += f"  Reasoning: {notes}\n"
+
+        prompt += f"\n{'='*60}\n"
+        prompt += """
+INSTRUCTIONS:
+1. Answer the user's question based on the predictions above
+2. If asked about a specific fight, provide detailed consensus and reasoning
+3. If asked about the whole event/card, summarize top picks across all fights
+4. If asked "why" analysts favor someone, explain the reasoning from their notes
+5. Focus on analyst consensus and key reasoning patterns
+6. Keep responses conversational and insightful (2-4 paragraphs)
+7. Always end with: "ChatMMA knows who every public analyst picked. AMA!"
+
+RESPONSE:
+"""
+        return prompt
+
 
 # Example usage
 if __name__ == "__main__":

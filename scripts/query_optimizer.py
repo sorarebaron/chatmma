@@ -255,6 +255,97 @@ class QueryOptimizer:
         conn.close()
         return events
 
+    def get_full_event_context(self, event_name=None):
+        """
+        Get complete context for an event (or most recent event).
+        Returns all fights with aggregated predictions - optimized for small events.
+        """
+        conn = self._get_connection()
+        cursor = conn.cursor()
+
+        # Get event
+        if event_name:
+            cursor.execute("""
+                SELECT id, name, date, location
+                FROM events
+                WHERE name = ?
+            """, (event_name,))
+        else:
+            cursor.execute("""
+                SELECT id, name, date, location
+                FROM events
+                ORDER BY date DESC
+                LIMIT 1
+            """)
+
+        event_row = cursor.fetchone()
+        if not event_row:
+            conn.close()
+            return None
+
+        event_id, event_name, event_date, event_location = event_row
+
+        # Get all fights for this event with predictions
+        cursor.execute("""
+            SELECT f.id, f.fighter_a, f.fighter_b, f.weight_class
+            FROM fights f
+            WHERE f.event_id = ?
+            ORDER BY f.id
+        """, (event_id,))
+
+        fights = []
+        for fight_row in cursor.fetchall():
+            fight_id, fighter_a, fighter_b, weight_class = fight_row
+
+            # Get predictions for this fight
+            cursor.execute("""
+                SELECT
+                    p.pick,
+                    p.notes,
+                    a.name
+                FROM predictions p
+                JOIN analysts a ON p.analyst_id = a.id
+                WHERE p.fight_id = ?
+                AND p.qa_status = 'approved'
+            """, (fight_id,))
+
+            predictions = []
+            picks_a = 0
+            picks_b = 0
+
+            for pred_row in cursor.fetchall():
+                pick, notes, analyst_name = pred_row
+                predictions.append({
+                    'pick': pick,
+                    'notes': notes,
+                    'analyst': analyst_name
+                })
+
+                if pick == 'fighter_a':
+                    picks_a += 1
+                elif pick == 'fighter_b':
+                    picks_b += 1
+
+            fights.append({
+                'fight_id': fight_id,
+                'fighter_a': fighter_a,
+                'fighter_b': fighter_b,
+                'weight_class': weight_class,
+                'picks_for_a': picks_a,
+                'picks_for_b': picks_b,
+                'total_picks': picks_a + picks_b,
+                'predictions': predictions
+            })
+
+        conn.close()
+
+        return {
+            'event_name': event_name,
+            'event_date': event_date,
+            'event_location': event_location,
+            'fights': fights
+        }
+
     def get_lightweight_context(self):
         """
         Get minimal context about available data (for fallback queries).
