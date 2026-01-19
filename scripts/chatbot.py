@@ -92,7 +92,8 @@ class ChatMMA:
         # UFC XXX pattern
         ufc_match = re.search(r'ufc\s+(\d+|vegas\s+\d+|fight\s+night\s+\d+)', question_lower)
         if ufc_match:
-            return f"UFC {ufc_match.group(1)}".title()
+            # Keep "UFC" uppercase, only title-case the captured group
+            return f"UFC {ufc_match.group(1).title()}"
 
         # Try to get the most recent event from database if not specified
         conn = self.optimizer._get_connection()
