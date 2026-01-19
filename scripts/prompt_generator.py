@@ -139,6 +139,116 @@ RESPONSE:
         return prompt
 
     @staticmethod
+    def build_inside_distance_prompt(context, user_question):
+        """
+        Build prompt for inside distance questions.
+        """
+        prompt = f"""You are ChatMMA, an AI that synthesizes MMA analyst predictions.
+
+USER QUESTION: {user_question}
+
+EVENT: {context['event']}
+
+FIGHTERS MOST LIKELY TO WIN INSIDE THE DISTANCE (KO/TKO/SUB):
+"""
+
+        if not context['inside_distance_picks']:
+            prompt += "\nNo fighters have significant finish predictions for this event.\n"
+        else:
+            for idx, pick in enumerate(context['inside_distance_picks'][:10], 1):
+                prompt += f"\n{idx}. {pick['favored_fighter']} ({pick['fight']})\n"
+                prompt += f"   - {pick['finish_prediction_count']} analysts predict finish\n"
+
+                # List methods
+                methods = [m['method'] for m in pick['methods']]
+                method_counts = {}
+                for m in methods:
+                    method_counts[m] = method_counts.get(m, 0) + 1
+                prompt += f"   - Methods: {', '.join([f'{m} ({c})' for m, c in method_counts.items()])}\n"
+
+        prompt += """
+INSTRUCTIONS:
+1. Answer the user's question about which fighters are most likely to win inside the distance
+2. Focus on the fighters with the most finish predictions
+3. Mention the expected methods (KO, TKO, SUB)
+4. Keep response conversational and actionable (2-3 paragraphs)
+
+RESPONSE:
+"""
+        return prompt
+
+    @staticmethod
+    def build_consensus_picks_prompt(context, user_question):
+        """
+        Build prompt for consensus picks questions.
+        """
+        prompt = f"""You are ChatMMA, an AI that synthesizes MMA analyst predictions.
+
+USER QUESTION: {user_question}
+
+EVENT: {context['event']}
+
+CONSENSUS PICKS (sorted by strength):
+"""
+
+        for idx, pick in enumerate(context['consensus_picks'], 1):
+            prompt += f"\n{idx}. {pick['consensus_fighter']} over {pick['fighter_a'] if pick['consensus_fighter'] == pick['fighter_b'] else pick['fighter_b']}\n"
+            prompt += f"   - Consensus: {pick['consensus_count']}-{pick['opposing_count']} ({pick['consensus_percentage']:.0f}%)\n"
+            prompt += f"   - High accuracy analysts: {pick['high_accuracy_count']}\n"
+
+        prompt += """
+INSTRUCTIONS:
+1. Answer the user's question about consensus picks
+2. Focus on the strongest consensus picks (highest percentages)
+3. Mention which picks have the most high-accuracy analyst support
+4. Keep response conversational and actionable (2-3 paragraphs)
+
+RESPONSE:
+"""
+        return prompt
+
+    @staticmethod
+    def build_underdogs_prompt(context, user_question):
+        """
+        Build prompt for underdog picks questions.
+        """
+        prompt = f"""You are ChatMMA, an AI that synthesizes MMA analyst predictions.
+
+USER QUESTION: {user_question}
+
+EVENT: {context['event']}
+
+BEST UNDERDOG PICKS (sorted by value):
+"""
+
+        if not context['underdog_picks']:
+            prompt += "\nNo clear underdog opportunities identified for this event.\n"
+        else:
+            for idx, pick in enumerate(context['underdog_picks'][:8], 1):
+                prompt += f"\n{idx}. {pick['underdog']} ({pick['fight']})\n"
+                prompt += f"   - Underdog pick: {pick['underdog_count']}-{pick['favorite_count']} ({pick['underdog_percentage']:.0f}%)\n"
+                prompt += f"   - High accuracy analysts supporting: {len(pick['high_accuracy_analysts'])}\n"
+
+                if pick['top_tags']:
+                    tags_str = ', '.join([t['tag'].replace('_', ' ') for t in pick['top_tags']])
+                    prompt += f"   - Key factors: {tags_str}\n"
+
+                if pick['high_accuracy_analysts']:
+                    analyst_names = [a['name'] for a in pick['high_accuracy_analysts'][:2]]
+                    prompt += f"   - Backed by: {', '.join(analyst_names)}\n"
+
+        prompt += """
+INSTRUCTIONS:
+1. Answer the user's question about underdog picks
+2. Focus on underdogs with high-accuracy analyst support (value picks)
+3. Explain why these underdogs have potential despite being less popular
+4. Keep response conversational and actionable (2-3 paragraphs)
+
+RESPONSE:
+"""
+        return prompt
+
+    @staticmethod
     def build_general_prompt(user_question):
         """
         Build prompt for general questions not tied to specific fights.
