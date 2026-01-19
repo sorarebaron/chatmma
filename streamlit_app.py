@@ -156,9 +156,18 @@ with st.sidebar:
 
     st.divider()
 
-    if st.button("Clear Chat History"):
-        st.session_state.messages = []
-        st.rerun()
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("Clear Chat History"):
+            st.session_state.messages = []
+            st.rerun()
+
+    with col2:
+        if st.button("Reload Chatbot"):
+            st.cache_resource.clear()
+            st.success("Chatbot reloaded!")
+            st.rerun()
 
 # Main chat interface
 st.subheader("Ask me anything about MMA predictions")
