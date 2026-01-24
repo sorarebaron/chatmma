@@ -76,15 +76,15 @@ class ChatMMA:
                     left_words = parts[0].strip().split()
                     fighter_a_words = left_words[-2:] if len(left_words) >= 2 else left_words[-1:]
                     fighter_a = ' '.join(fighter_a_words)
-                    # Remove punctuation
-                    fighter_a = re.sub(r'[^\w\s]', '', fighter_a)
+                    # Remove punctuation but keep apostrophes (for names like O'Malley)
+                    fighter_a = re.sub(r'[^\w\s\']', '', fighter_a)
 
                     # Extract up to 2 words after "vs" for full names (e.g., "Arnold Allen")
                     right_words = parts[1].strip().split()
                     fighter_b_words = right_words[:2] if len(right_words) >= 2 else right_words[:1]
                     fighter_b = ' '.join(fighter_b_words)
-                    # Remove punctuation
-                    fighter_b = re.sub(r'[^\w\s]', '', fighter_b)
+                    # Remove punctuation but keep apostrophes (for names like O'Malley)
+                    fighter_b = re.sub(r'[^\w\s\']', '', fighter_b)
 
                     return ('fight_specific', {
                         'fighter_a': fighter_a.title(),
