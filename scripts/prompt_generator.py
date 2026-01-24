@@ -89,7 +89,6 @@ INSTRUCTIONS:
 4. If asked about methods, reference the expected finish types
 5. Keep response conversational and insightful (2-4 paragraphs)
 6. If results haven't been entered, don't reveal analyst names
-7. Use the marketing message: "ChatMMA knows who every public analyst picked. AMA!"
 
 RESPONSE:
 """
@@ -258,8 +257,6 @@ RESPONSE:
 The user asked: {user_question}
 
 This appears to be a general question. Respond helpfully and direct them to ask about specific fights or events if appropriate.
-
-Use the marketing message: "ChatMMA knows who every public analyst picked. AMA!"
 
 RESPONSE:
 """
