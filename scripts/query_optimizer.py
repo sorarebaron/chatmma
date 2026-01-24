@@ -28,18 +28,20 @@ class QueryOptimizer:
         cursor = conn.cursor()
 
         if event_name:
+            # Match where BOTH fighters are in the fight (in either order)
             query = """
                 SELECT f.id, f.fighter_a, f.fighter_b, e.name, e.date, e.results_entered
                 FROM fights f
                 JOIN events e ON f.event_id = e.id
                 WHERE e.name = ?
                 AND (
-                    (f.fighter_a LIKE ? OR f.fighter_b LIKE ?)
-                    OR (f.fighter_a LIKE ? OR f.fighter_b LIKE ?)
+                    (f.fighter_a LIKE ? AND f.fighter_b LIKE ?)
+                    OR (f.fighter_a LIKE ? AND f.fighter_b LIKE ?)
                 )
             """
-            params = (event_name, f"%{fighter_name_a}%", f"%{fighter_name_a}%",
-                      f"%{fighter_name_b}%", f"%{fighter_name_b}%")
+            params = (event_name,
+                      f"%{fighter_name_a}%", f"%{fighter_name_b}%",
+                      f"%{fighter_name_b}%", f"%{fighter_name_a}%")
         else:
             # Get most recent event with these fighters
             query = """
@@ -47,14 +49,14 @@ class QueryOptimizer:
                 FROM fights f
                 JOIN events e ON f.event_id = e.id
                 WHERE (
-                    (f.fighter_a LIKE ? OR f.fighter_b LIKE ?)
-                    OR (f.fighter_a LIKE ? OR f.fighter_b LIKE ?)
+                    (f.fighter_a LIKE ? AND f.fighter_b LIKE ?)
+                    OR (f.fighter_a LIKE ? AND f.fighter_b LIKE ?)
                 )
                 ORDER BY e.date DESC
                 LIMIT 1
             """
-            params = (f"%{fighter_name_a}%", f"%{fighter_name_a}%",
-                      f"%{fighter_name_b}%", f"%{fighter_name_b}%")
+            params = (f"%{fighter_name_a}%", f"%{fighter_name_b}%",
+                      f"%{fighter_name_b}%", f"%{fighter_name_a}%")
 
         cursor.execute(query, params)
         result = cursor.fetchone()
