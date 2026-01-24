@@ -88,7 +88,6 @@ def init_chatbot():
 
 # Header
 st.markdown('<div class="main-header">🥊 ChatMMA</div>', unsafe_allow_html=True)
-st.markdown('<div class="tagline">"ChatMMA knows who every public analyst picked. AMA!"</div>', unsafe_allow_html=True)
 
 # Sidebar
 with st.sidebar:
@@ -170,43 +169,6 @@ with st.sidebar:
             st.rerun()
 
 # Main chat interface
-st.subheader("Ask me anything about MMA predictions")
-
-# Example questions
-if not st.session_state.messages:
-    st.info("💡 **Try asking:**")
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        if st.button("🥊 Who will win Kape vs Royval?"):
-            st.session_state.messages.append({
-                "role": "user",
-                "content": "Who will win between Kape and Royval?"
-            })
-            st.rerun()
-
-        if st.button("📊 What are the consensus picks?"):
-            st.session_state.messages.append({
-                "role": "user",
-                "content": "What are the consensus picks for the main card?"
-            })
-            st.rerun()
-
-    with col2:
-        if st.button("🎯 Why do analysts favor Kape?"):
-            st.session_state.messages.append({
-                "role": "user",
-                "content": "Why do analysts favor Kape over Royval?"
-            })
-            st.rerun()
-
-        if st.button("📈 Which analysts are most accurate?"):
-            st.session_state.messages.append({
-                "role": "user",
-                "content": "Which analysts have the best historical accuracy?"
-            })
-            st.rerun()
 
 # Display chat messages
 for message in st.session_state.messages:
