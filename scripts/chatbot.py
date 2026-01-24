@@ -66,13 +66,26 @@ class ChatMMA:
             return ('underdogs', {'event_name': event_name})
 
         # Detect fight-specific questions
-        vs_patterns = [" vs ", " versus ", " v ", " against "]
+        import re
+        vs_patterns = [" vs ", " vs. ", " versus ", " v ", " against "]
         for pattern in vs_patterns:
             if pattern in question_lower:
                 parts = question_lower.split(pattern)
                 if len(parts) == 2:
-                    fighter_a = parts[0].strip().split()[-1]  # Last word before "vs"
-                    fighter_b = parts[1].strip().split()[0]   # First word after "vs"
+                    # Extract up to 2 words before "vs" for full names (e.g., "Jean Silva")
+                    left_words = parts[0].strip().split()
+                    fighter_a_words = left_words[-2:] if len(left_words) >= 2 else left_words[-1:]
+                    fighter_a = ' '.join(fighter_a_words)
+                    # Remove punctuation
+                    fighter_a = re.sub(r'[^\w\s]', '', fighter_a)
+
+                    # Extract up to 2 words after "vs" for full names (e.g., "Arnold Allen")
+                    right_words = parts[1].strip().split()
+                    fighter_b_words = right_words[:2] if len(right_words) >= 2 else right_words[:1]
+                    fighter_b = ' '.join(fighter_b_words)
+                    # Remove punctuation
+                    fighter_b = re.sub(r'[^\w\s]', '', fighter_b)
+
                     return ('fight_specific', {
                         'fighter_a': fighter_a.title(),
                         'fighter_b': fighter_b.title(),
